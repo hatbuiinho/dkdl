@@ -1,14 +1,5 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-// import './App.css';
 import './assets/scss/bootstrap.scss';
 import { Festival } from './page/Festival';
-import {
-  LoadingOutlined,
-  SmileOutlined,
-  SolutionOutlined,
-  UserOutlined,
-} from '@ant-design/icons';
 import { AppRoute } from './container/AppRoute';
 import { Switch } from 'react-router-dom';
 import { HeaderLayout } from './container/Layouts/HeaderLayout';
