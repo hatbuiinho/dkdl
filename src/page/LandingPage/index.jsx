@@ -2,8 +2,6 @@
 /* eslint arrow-parens: 0 */
 import React from 'react';
 
-import { Layout, Steps, Select } from 'antd';
-
 import { Helmet } from 'react-helmet';
 import CeremonyServingRegister from './CeremonyServingRegister';
 

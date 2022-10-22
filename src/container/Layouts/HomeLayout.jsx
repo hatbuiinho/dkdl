@@ -8,7 +8,7 @@ export const HomeLayout = ({ children }) => {
       <Header />
       {/* <LoginPopup /> */}
       {children}
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };
