@@ -3,8 +3,8 @@ import { Festival } from './page/Festival';
 import { AppRoute } from './container/AppRoute';
 import { Switch } from 'react-router-dom';
 import { HeaderLayout } from './container/Layouts/HeaderLayout';
-import CeremonyServingRegister from './page/LandingPage/CeremonyServingRegister';
-import Home from './page/LandingPage';
+import CeremonyServingRegister from './component/CeremonyServingRegister';
+import Home from './page/Home';
 import { HomeLayout } from './container/Layouts/HomeLayout';
 import FestivalLayout from './container/Layouts/FestivalLayout';
 function App() {

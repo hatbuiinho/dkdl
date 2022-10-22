@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { Helmet } from 'react-helmet';
-import CeremonyServingRegister from './CeremonyServingRegister';
+import CeremonyServingRegister from '../../component/CeremonyServingRegister';
 
 export class Home extends React.Component {
   render() {
