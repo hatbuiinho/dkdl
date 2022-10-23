@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 // import LoginPopup from "../Auth/LoginPopup";
 export const Footer = () => {
   return (
@@ -13,8 +13,7 @@ export const Footer = () => {
             <div className="col-lg-3 col-md-6">
               <h5 className="text-light mb-4">Address</h5>
               <p className="mb-2">
-                <i className="fa fa-map-marker-alt me-3"></i>123 Street, New
-                York, USA
+                <i className="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA
               </p>
               <p className="mb-2">
                 <i className="fa fa-phone-alt me-3"></i>+012 345 67890
@@ -76,10 +75,7 @@ export const Footer = () => {
             <div className="col-lg-3 col-md-6">
               <h5 className="text-light mb-4">Newsletter</h5>
               <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
-              <div
-                className="position-relative mx-auto"
-                style={{ maxWidth: 400 }}
-              >
+              <div className="position-relative mx-auto" style={{ maxWidth: 400 }}>
                 <input
                   className="form-control border-0 w-100 py-3 ps-4 pe-5"
                   type="text"

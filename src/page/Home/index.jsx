@@ -50,34 +50,20 @@ export class Home extends React.Component {
                   >
                     <span></span>
                   </button>
-                  <h6 className="text-white m-0 ms-4 d-none d-sm-block">
-                    Xem video
-                  </h6>
+                  <h6 className="text-white m-0 ms-4 d-none d-sm-block">Xem video</h6>
                 </div>
               </div>
             </div>
             <div className="col-lg-6">
               <div className="owl-carousel header-carousel">
                 <div className="owl-carousel-item">
-                  <img
-                    className="img-fluid"
-                    src="zoofari/img/carousel-1.jpg"
-                    alt=""
-                  />
+                  <img className="img-fluid" src="zoofari/img/carousel-1.jpg" alt="" />
                 </div>
                 <div className="owl-carousel-item">
-                  <img
-                    className="img-fluid"
-                    src="zoofari/img/carousel-2.jpg"
-                    alt=""
-                  />
+                  <img className="img-fluid" src="zoofari/img/carousel-2.jpg" alt="" />
                 </div>
                 <div className="owl-carousel-item">
-                  <img
-                    className="img-fluid"
-                    src="zoofari/img/carousel-3.jpg"
-                    alt=""
-                  />
+                  <img className="img-fluid" src="zoofari/img/carousel-3.jpg" alt="" />
                 </div>
               </div>
             </div>
@@ -196,10 +182,7 @@ export class Home extends React.Component {
           </div> */}
             </div>
             <div className="row g-4">
-              <div
-                className="col-lg-4 col-md-6 wow fadeInUp"
-                data-wow-delay="0.1s"
-              >
+              <div className="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div className="row g-4">
                   <div className="col-12">
                     <a
@@ -214,9 +197,7 @@ export class Home extends React.Component {
                           alt=""
                         />
                         <div className="animal-text p-4">
-                          <p className="text-white small text-uppercase mb-0">
-                            Animal
-                          </p>
+                          <p className="text-white small text-uppercase mb-0">Animal</p>
                           <h5 className="text-white mb-0">Elephant</h5>
                         </div>
                       </div>
@@ -235,9 +216,7 @@ export class Home extends React.Component {
                           alt=""
                         />
                         <div className="animal-text p-4">
-                          <p className="text-white small text-uppercase mb-0">
-                            Animal
-                          </p>
+                          <p className="text-white small text-uppercase mb-0">Animal</p>
                           <h5 className="text-white mb-0">Elephant</h5>
                         </div>
                       </div>
@@ -245,10 +224,7 @@ export class Home extends React.Component {
                   </div>
                 </div>
               </div>
-              <div
-                className="col-lg-4 col-md-6 wow fadeInUp"
-                data-wow-delay="0.3s"
-              >
+              <div className="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                 <div className="row g-4">
                   <div className="col-12">
                     <a
@@ -263,9 +239,7 @@ export class Home extends React.Component {
                           alt=""
                         />
                         <div className="animal-text p-4">
-                          <p className="text-white small text-uppercase mb-0">
-                            Animal
-                          </p>
+                          <p className="text-white small text-uppercase mb-0">Animal</p>
                           <h5 className="text-white mb-0">Elephant</h5>
                         </div>
                       </div>
@@ -284,9 +258,7 @@ export class Home extends React.Component {
                           alt=""
                         />
                         <div className="animal-text p-4">
-                          <p className="text-white small text-uppercase mb-0">
-                            Animal
-                          </p>
+                          <p className="text-white small text-uppercase mb-0">Animal</p>
                           <h5 className="text-white mb-0">Elephant</h5>
                         </div>
                       </div>
@@ -294,10 +266,7 @@ export class Home extends React.Component {
                   </div>
                 </div>
               </div>
-              <div
-                className="col-lg-4 col-md-6 wow fadeInUp"
-                data-wow-delay="0.5s"
-              >
+              <div className="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div className="row g-4">
                   <div className="col-12">
                     <a
@@ -312,9 +281,7 @@ export class Home extends React.Component {
                           alt=""
                         />
                         <div className="animal-text p-4">
-                          <p className="text-white small text-uppercase mb-0">
-                            Animal
-                          </p>
+                          <p className="text-white small text-uppercase mb-0">Animal</p>
                           <h5 className="text-white mb-0">Elephant</h5>
                         </div>
                       </div>
@@ -333,9 +300,7 @@ export class Home extends React.Component {
                           alt=""
                         />
                         <div className="animal-text p-4">
-                          <p className="text-white small text-uppercase mb-0">
-                            Animal
-                          </p>
+                          <p className="text-white small text-uppercase mb-0">Animal</p>
                           <h5 className="text-white mb-0">Elephant</h5>
                         </div>
                       </div>
@@ -390,10 +355,7 @@ export class Home extends React.Component {
                   </li>
                 </ul>
               </div>
-              <div
-                className="col-md-6 text-light wow fadeIn"
-                data-wow-delay="0.5s"
-              >
+              <div className="col-md-6 text-light wow fadeIn" data-wow-delay="0.5s">
                 <h1 className="display-6 text-white mb-5">Thông tin liên hệ</h1>
                 <table className="table">
                   <tbody>
@@ -430,10 +392,7 @@ export class Home extends React.Component {
         {/* <!-- Testimonial Start --> */}
         <div className="container-xxl py-5">
           <div className="container">
-            <h1
-              className="display-5 text-center mb-5 wow fadeInUp"
-              data-wow-delay="0.1s"
-            >
+            <h1 className="display-5 text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
               Người nổi tiếng tham gia!
             </h1>
             <div
@@ -448,10 +407,9 @@ export class Home extends React.Component {
                 />
                 <div className="testimonial-text rounded text-center p-4">
                   <p>
-                    Clita clita tempor justo dolor ipsum amet kasd amet duo
-                    justo duo duo labore sed sed. Magna ut diam sit et amet stet
-                    eos sed clita erat magna elitr erat sit sit erat at rebum
-                    justo sea clita.
+                    Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo
+                    labore sed sed. Magna ut diam sit et amet stet eos sed clita erat
+                    magna elitr erat sit sit erat at rebum justo sea clita.
                   </p>
                   <h5 className="mb-1">Patient Name</h5>
                   <span className="fst-italic">Profession</span>
@@ -465,10 +423,9 @@ export class Home extends React.Component {
                 />
                 <div className="testimonial-text rounded text-center p-4">
                   <p>
-                    Clita clita tempor justo dolor ipsum amet kasd amet duo
-                    justo duo duo labore sed sed. Magna ut diam sit et amet stet
-                    eos sed clita erat magna elitr erat sit sit erat at rebum
-                    justo sea clita.
+                    Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo
+                    labore sed sed. Magna ut diam sit et amet stet eos sed clita erat
+                    magna elitr erat sit sit erat at rebum justo sea clita.
                   </p>
                   <h5 className="mb-1">Patient Name</h5>
                   <span className="fst-italic">Profession</span>
@@ -482,10 +439,9 @@ export class Home extends React.Component {
                 />
                 <div className="testimonial-text rounded text-center p-4">
                   <p>
-                    Clita clita tempor justo dolor ipsum amet kasd amet duo
-                    justo duo duo labore sed sed. Magna ut diam sit et amet stet
-                    eos sed clita erat magna elitr erat sit sit erat at rebum
-                    justo sea clita.
+                    Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo
+                    labore sed sed. Magna ut diam sit et amet stet eos sed clita erat
+                    magna elitr erat sit sit erat at rebum justo sea clita.
                   </p>
                   <h5 className="mb-1">Patient Name</h5>
                   <span className="fst-italic">Profession</span>
@@ -497,10 +453,7 @@ export class Home extends React.Component {
         {/* <!-- Testimonial End --> */}
 
         {/* <!-- Back to Top --> */}
-        <a
-          href="#"
-          className="btn btn-lg btn-primary btn-lg-square back-to-top"
-        >
+        <a href="#" className="btn btn-lg btn-primary btn-lg-square back-to-top">
           <i className="bi bi-arrow-up"></i>
         </a>
         {/* </Content> */}

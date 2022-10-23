@@ -78,9 +78,7 @@ const NoBoderInput = (props) => (
 const RegisterResult = (props) => {
   return (
     <div className="container-fluid">
-      <Title className="text-center">
-        Thông tin đăng ký và kết quả phân ban
-      </Title>
+      <Title className="text-center">Thông tin đăng ký và kết quả phân ban</Title>
       <div className="row">
         <div className="col-6 col-md-3  border-end">
           <div className="d-flex flex-column align-items-center border-bottom pb-2">
@@ -114,9 +112,7 @@ const RegisterResult = (props) => {
               className="d-block badge bg-info p-2 rounded mt-2"
               style={{ userSelect: 'none' }}
             >
-              {res.teamLeader != result.name
-                ? `Trưởng nhóm: ${res.teamLeader}`
-                : 'Nhóm'}
+              {res.teamLeader != result.name ? `Trưởng nhóm: ${res.teamLeader}` : 'Nhóm'}
             </div>
           )}
         </div>

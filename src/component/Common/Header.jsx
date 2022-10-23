@@ -23,28 +23,16 @@ export const Header = () => {
               <small>+012 345 6789</small>
             </div>
             <div className="h-100 d-inline-flex align-items-center">
-              <a
-                className="btn btn-sm-square bg-white text-primary me-1"
-                href=""
-              >
+              <a className="btn btn-sm-square bg-white text-primary me-1" href="">
                 <i className="fab fa-facebook-f"></i>
               </a>
-              <a
-                className="btn btn-sm-square bg-white text-primary me-1"
-                href=""
-              >
+              <a className="btn btn-sm-square bg-white text-primary me-1" href="">
                 <i className="fab fa-twitter"></i>
               </a>
-              <a
-                className="btn btn-sm-square bg-white text-primary me-1"
-                href=""
-              >
+              <a className="btn btn-sm-square bg-white text-primary me-1" href="">
                 <i className="fab fa-linkedin-in"></i>
               </a>
-              <a
-                className="btn btn-sm-square bg-white text-primary me-0"
-                href=""
-              >
+              <a className="btn btn-sm-square bg-white text-primary me-0" href="">
                 <i className="fab fa-instagram"></i>
               </a>
             </div>
@@ -66,10 +54,7 @@ export const Header = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div
-          className="collapse navbar-collapse py-4 py-lg-0"
-          id="navbarCollapse"
-        >
+        <div className="collapse navbar-collapse py-4 py-lg-0" id="navbarCollapse">
           <div className="navbar-nav ms-auto">
             <a href="index.html" className="nav-item nav-link active">
               Trang chủ

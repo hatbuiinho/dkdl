@@ -1,9 +1,5 @@
 import { Steps } from 'antd';
-import {
-  LoginOutlined,
-  SolutionOutlined,
-  SmileOutlined,
-} from '@ant-design/icons';
+import { LoginOutlined, SolutionOutlined, SmileOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
 import Step1 from '../Steps/Step1';
 import Step2 from '../Steps/Step2';
@@ -39,14 +35,11 @@ const CeremonyServingRegister = (props) => {
       <div className="container">
         <h1 className="display-5 mb-4 text-center">ĐĂNG KÝ ĐẠI LỄ</h1>
         <Steps current={stepTemplate[step].current}>
-          <Step title="Thông tin cơ bản"  icon={<LoginOutlined />} />
+          <Step title="Thông tin cơ bản" icon={<LoginOutlined />} />
           <Step title="Cập nhật thông tin" icon={<SolutionOutlined />} />
           <Step title="Hoàn thành" icon={<SmileOutlined />} />
         </Steps>
-        <div
-          className="row g-5 justify-content-center"
-          style={{ marginTop: 20 }}
-        >
+        <div className="row g-5 justify-content-center" style={{ marginTop: 20 }}>
           {stepTemplate[step].template}
         </div>
       </div>

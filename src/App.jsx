@@ -10,13 +10,7 @@ import FestivalLayout from './container/Layouts/FestivalLayout';
 function App() {
   return (
     <Switch>
-      <AppRoute
-        path="/"
-        needAuth={false}
-        component={Home}
-        layout={HomeLayout}
-        exact
-      />
+      <AppRoute path="/" needAuth={false} component={Home} layout={HomeLayout} exact />
       <AppRoute
         path="/festival"
         needAuth={false}

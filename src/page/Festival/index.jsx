@@ -46,10 +46,7 @@ export const Festival = () => {
 
               <div class="festival_item_body">
                 <div class="container_img">
-                  <img
-                    style={{ width: '40%' }}
-                    src="/images/festival/BAN_MT.jpg"
-                  ></img>
+                  <img style={{ width: '40%' }} src="/images/festival/BAN_MT.jpg"></img>
                 </div>
                 <div class="container_content">{data.content}</div>
                 <Button style={{ background: 'green', height: '60px' }}>
