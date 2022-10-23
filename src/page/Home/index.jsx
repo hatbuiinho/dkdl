@@ -57,13 +57,13 @@ export class Home extends React.Component {
             <div className="col-lg-6">
               <div className="owl-carousel header-carousel">
                 <div className="owl-carousel-item">
-                  <img className="img-fluid" src="zoofari/img/carousel-1.jpg" alt="" />
+                  <img className="img-fluid" src="/img/carousel-1.jpg" alt="" />
                 </div>
                 <div className="owl-carousel-item">
-                  <img className="img-fluid" src="zoofari/img/carousel-2.jpg" alt="" />
+                  <img className="img-fluid" src="/img/carousel-2.jpg" alt="" />
                 </div>
                 <div className="owl-carousel-item">
-                  <img className="img-fluid" src="zoofari/img/carousel-3.jpg" alt="" />
+                  <img className="img-fluid" src="/img/carousel-3.jpg" alt="" />
                 </div>
               </div>
             </div>
@@ -193,7 +193,7 @@ export class Home extends React.Component {
                       <div className="position-relative">
                         <img
                           className="img-fluid"
-                          src="zoofari/img/animal-md-1.jpg"
+                          src="/img/animal-md-1.jpg"
                           alt=""
                         />
                         <div className="animal-text p-4">
@@ -212,7 +212,7 @@ export class Home extends React.Component {
                       <div className="position-relative">
                         <img
                           className="img-fluid"
-                          src="zoofari/img/animal-lg-1.jpg"
+                          src="/img/animal-lg-1.jpg"
                           alt=""
                         />
                         <div className="animal-text p-4">
@@ -235,7 +235,7 @@ export class Home extends React.Component {
                       <div className="position-relative">
                         <img
                           className="img-fluid"
-                          src="zoofari/img/animal-lg-2.jpg"
+                          src="/img/animal-lg-2.jpg"
                           alt=""
                         />
                         <div className="animal-text p-4">
@@ -254,7 +254,7 @@ export class Home extends React.Component {
                       <div className="position-relative">
                         <img
                           className="img-fluid"
-                          src="zoofari/img/animal-md-2.jpg"
+                          src="/img/animal-md-2.jpg"
                           alt=""
                         />
                         <div className="animal-text p-4">
@@ -271,15 +271,11 @@ export class Home extends React.Component {
                   <div className="col-12">
                     <a
                       className="animal-item"
-                      href="img/animal-md-3.jpg"
+                      href="/img/animal-md-3.jpg"
                       data-lightbox="animal"
                     >
                       <div className="position-relative">
-                        <img
-                          className="img-fluid"
-                          src="zoofari/img/animal-md-3.jpg"
-                          alt=""
-                        />
+                        <img className="img-fluid" src="/img/animal-md-3.jpg" alt="" />
                         <div className="animal-text p-4">
                           <p className="text-white small text-uppercase mb-0">Animal</p>
                           <h5 className="text-white mb-0">Elephant</h5>
@@ -290,15 +286,11 @@ export class Home extends React.Component {
                   <div className="col-12">
                     <a
                       className="animal-item"
-                      href="img/animal-lg-3.jpg"
+                      href="/img/animal-lg-3.jpg"
                       data-lightbox="animal"
                     >
                       <div className="position-relative">
-                        <img
-                          className="img-fluid"
-                          src="zoofari/img/animal-lg-3.jpg"
-                          alt=""
-                        />
+                        <img className="img-fluid" src="/img/animal-lg-3.jpg" alt="" />
                         <div className="animal-text p-4">
                           <p className="text-white small text-uppercase mb-0">Animal</p>
                           <h5 className="text-white mb-0">Elephant</h5>
@@ -402,7 +394,7 @@ export class Home extends React.Component {
               <div className="testimonial-item text-center">
                 <img
                   className="img-fluid rounded-circle border border-2 p-2 mx-auto mb-4"
-                  src="zoofari/img/testimonial-1.jpg"
+                  src="/img/testimonial-1.jpg"
                   style={{ width: 100, height: 100 }}
                 />
                 <div className="testimonial-text rounded text-center p-4">
@@ -418,7 +410,7 @@ export class Home extends React.Component {
               <div className="testimonial-item text-center">
                 <img
                   className="img-fluid rounded-circle border border-2 p-2 mx-auto mb-4"
-                  src="zoofari/img/testimonial-2.jpg"
+                  src="/img/testimonial-2.jpg"
                   style={{ width: 100, height: 100 }}
                 />
                 <div className="testimonial-text rounded text-center p-4">
@@ -434,7 +426,7 @@ export class Home extends React.Component {
               <div className="testimonial-item text-center">
                 <img
                   className="img-fluid rounded-circle border border-2 p-2 mx-auto mb-4"
-                  src="zoofari/img/testimonial-3.jpg"
+                  src="/img/testimonial-3.jpg"
                   style={{ width: 100, height: 100 }}
                 />
                 <div className="testimonial-text rounded text-center p-4">
