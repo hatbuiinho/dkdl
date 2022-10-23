@@ -4,6 +4,8 @@ import React from 'react';
 
 import { Helmet } from 'react-helmet';
 import CeremonyServingRegister from '../../component/CeremonyServingRegister';
+import './style.scss';
+import { Carousel } from 'antd';
 
 export class Home extends React.Component {
   render() {
@@ -55,17 +57,17 @@ export class Home extends React.Component {
               </div>
             </div>
             <div className="col-lg-6">
-              <div className="owl-carousel header-carousel">
-                <div className="owl-carousel-item">
+              <Carousel autoplay draggable>
+                <div className="item">
                   <img className="img-fluid" src="/img/carousel-1.jpg" alt="" />
                 </div>
-                <div className="owl-carousel-item">
+                <div className="item">
                   <img className="img-fluid" src="/img/carousel-2.jpg" alt="" />
                 </div>
-                <div className="owl-carousel-item">
+                <div className="item">
                   <img className="img-fluid" src="/img/carousel-3.jpg" alt="" />
                 </div>
-              </div>
+              </Carousel>
             </div>
           </div>
         </div>
@@ -163,7 +165,7 @@ export class Home extends React.Component {
         </div>
         {/* <!-- Facts End --> */}
 
-        {/* <!-- Animal Start --> */}
+        {/* <!-- img Start --> */}
         <div className="container-xxl py-5">
           <div className="container">
             <div
@@ -177,7 +179,7 @@ export class Home extends React.Component {
               </div>
               {/* <div className="col-lg-6 text-lg-end">
             <a className="btn btn-primary py-3 px-5" href=""
-              >Explore More Animals</a
+              >Explore More imgs</a
             >
           </div> */}
             </div>
@@ -185,39 +187,23 @@ export class Home extends React.Component {
               <div className="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div className="row g-4">
                   <div className="col-12">
-                    <a
-                      className="animal-item"
-                      href="img/animal-md-1.jpg"
-                      data-lightbox="animal"
-                    >
+                    <a className="img-item" href="img/img-md-1.jpg" data-lightbox="img">
                       <div className="position-relative">
-                        <img
-                          className="img-fluid"
-                          src="/img/animal-md-1.jpg"
-                          alt=""
-                        />
-                        <div className="animal-text p-4">
-                          <p className="text-white small text-uppercase mb-0">Animal</p>
-                          <h5 className="text-white mb-0">Elephant</h5>
+                        <img className="img-fluid" src="/img/img-md-1.jpg" alt="" />
+                        <div className="img-text p-4">
+                          <p className="text-white small text-uppercase mb-0">img</p>
+                          <h5 className="text-white mb-0">Person</h5>
                         </div>
                       </div>
                     </a>
                   </div>
                   <div className="col-12">
-                    <a
-                      className="animal-item"
-                      href="img/animal-lg-1.jpg"
-                      data-lightbox="animal"
-                    >
+                    <a className="img-item" href="img/img-lg-1.jpg" data-lightbox="img">
                       <div className="position-relative">
-                        <img
-                          className="img-fluid"
-                          src="/img/animal-lg-1.jpg"
-                          alt=""
-                        />
-                        <div className="animal-text p-4">
-                          <p className="text-white small text-uppercase mb-0">Animal</p>
-                          <h5 className="text-white mb-0">Elephant</h5>
+                        <img className="img-fluid" src="/img/img-lg-1.jpg" alt="" />
+                        <div className="img-text p-4">
+                          <p className="text-white small text-uppercase mb-0">img</p>
+                          <h5 className="text-white mb-0">Person</h5>
                         </div>
                       </div>
                     </a>
@@ -227,39 +213,23 @@ export class Home extends React.Component {
               <div className="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                 <div className="row g-4">
                   <div className="col-12">
-                    <a
-                      className="animal-item"
-                      href="img/animal-lg-2.jpg"
-                      data-lightbox="animal"
-                    >
+                    <a className="img-item" href="img/img-lg-2.jpg" data-lightbox="img">
                       <div className="position-relative">
-                        <img
-                          className="img-fluid"
-                          src="/img/animal-lg-2.jpg"
-                          alt=""
-                        />
-                        <div className="animal-text p-4">
-                          <p className="text-white small text-uppercase mb-0">Animal</p>
-                          <h5 className="text-white mb-0">Elephant</h5>
+                        <img className="img-fluid" src="/img/img-lg-2.jpg" alt="" />
+                        <div className="img-text p-4">
+                          <p className="text-white small text-uppercase mb-0">img</p>
+                          <h5 className="text-white mb-0">Person</h5>
                         </div>
                       </div>
                     </a>
                   </div>
                   <div className="col-12">
-                    <a
-                      className="animal-item"
-                      href="img/animal-md-2.jpg"
-                      data-lightbox="animal"
-                    >
+                    <a className="img-item" href="img/img-md-2.jpg" data-lightbox="img">
                       <div className="position-relative">
-                        <img
-                          className="img-fluid"
-                          src="/img/animal-md-2.jpg"
-                          alt=""
-                        />
-                        <div className="animal-text p-4">
-                          <p className="text-white small text-uppercase mb-0">Animal</p>
-                          <h5 className="text-white mb-0">Elephant</h5>
+                        <img className="img-fluid" src="/img/img-md-2.jpg" alt="" />
+                        <div className="img-text p-4">
+                          <p className="text-white small text-uppercase mb-0">img</p>
+                          <h5 className="text-white mb-0">Person</h5>
                         </div>
                       </div>
                     </a>
@@ -269,31 +239,23 @@ export class Home extends React.Component {
               <div className="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div className="row g-4">
                   <div className="col-12">
-                    <a
-                      className="animal-item"
-                      href="/img/animal-md-3.jpg"
-                      data-lightbox="animal"
-                    >
+                    <a className="img-item" href="/img/img-md-3.jpg" data-lightbox="img">
                       <div className="position-relative">
-                        <img className="img-fluid" src="/img/animal-md-3.jpg" alt="" />
-                        <div className="animal-text p-4">
-                          <p className="text-white small text-uppercase mb-0">Animal</p>
-                          <h5 className="text-white mb-0">Elephant</h5>
+                        <img className="img-fluid" src="/img/img-md-3.jpg" alt="" />
+                        <div className="img-text p-4">
+                          <p className="text-white small text-uppercase mb-0">img</p>
+                          <h5 className="text-white mb-0">Person</h5>
                         </div>
                       </div>
                     </a>
                   </div>
                   <div className="col-12">
-                    <a
-                      className="animal-item"
-                      href="/img/animal-lg-3.jpg"
-                      data-lightbox="animal"
-                    >
+                    <a className="img-item" href="/img/img-lg-3.jpg" data-lightbox="img">
                       <div className="position-relative">
-                        <img className="img-fluid" src="/img/animal-lg-3.jpg" alt="" />
-                        <div className="animal-text p-4">
-                          <p className="text-white small text-uppercase mb-0">Animal</p>
-                          <h5 className="text-white mb-0">Elephant</h5>
+                        <img className="img-fluid" src="/img/img-lg-3.jpg" alt="" />
+                        <div className="img-text p-4">
+                          <p className="text-white small text-uppercase mb-0">img</p>
+                          <h5 className="text-white mb-0">Person</h5>
                         </div>
                       </div>
                     </a>
@@ -303,7 +265,7 @@ export class Home extends React.Component {
             </div>
           </div>
         </div>
-        {/* <!-- Animal End --> */}
+        {/* <!-- img End --> */}
 
         {/* <!-- Visiting Hours Start --> */}
         <div
