@@ -7,6 +7,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:prettier/recommended',
+    'plugin:react/jsx-runtime',
   ],
   overrides: [],
   parserOptions: {
@@ -16,5 +17,10 @@ module.exports = {
   plugins: ['react'],
   rules: {
     'react/react-in-jsx-scope': 'off',
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
   },
 };
