@@ -1,9 +1,10 @@
-import { Steps } from 'antd';
-import { LoginOutlined, SolutionOutlined, SmileOutlined } from '@ant-design/icons';
+import { Button, message, Steps } from 'antd';
+import { LoginOutlined, SolutionOutlined, SmileOutlined, ScheduleOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
 import Step1 from '../Steps/Step1';
 import Step2 from '../Steps/Step2';
 import Step3 from '../Steps/Step3';
+import Step4 from '../Steps/Step4';
 
 const { Step } = Steps;
 
@@ -26,8 +27,13 @@ const CeremonyServingRegister = (props) => {
     },
     {
       title: 'Thông tin đầy đủ',
-      template: <Step3 submitTarget={submitTarget} />,
+      template: <Step3 submitStep={submitStep(3)} />,
       current: 2,
+    },
+    {
+      title: 'Thông tin đầy đủ',
+      template: <Step4 submitTarget={submitTarget} />,
+      current: 3,
     },
   ];
   return (
@@ -37,9 +43,10 @@ const CeremonyServingRegister = (props) => {
         <Steps current={stepTemplate[step].current}>
           <Step title="Thông tin cơ bản" icon={<LoginOutlined />} />
           <Step title="Cập nhật thông tin" icon={<SolutionOutlined />} />
-          <Step title="Hoàn thành" icon={<SmileOutlined />} />
+          <Step title="Lịch trình" icon={<SmileOutlined />} />
+          <Step title="Công việc" icon={<SmileOutlined />} />
         </Steps>
-        <div className="row g-5 justify-content-center" style={{ marginTop: 20 }}>
+        <div className="row g-3 justify-content-center" style={{ marginTop: 20 }}>
           {stepTemplate[step].template}
         </div>
       </div>
