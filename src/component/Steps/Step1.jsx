@@ -1,56 +1,60 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { Input, Select, Layout, Tabs } from 'antd';
+import { Input, Select, Layout, Tabs, Radio, Space } from 'antd';
 
 const { Content } = Layout;
 const { TabPane } = Tabs;
 const { Option } = Select;
 
 const Step1 = (props) => {
-  const { submitStep } = props;
+  const { submitStep, title } = props;
+  console.log(title);
   return (
     <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-      <strong style={{ fontSize: 16 }}>Thông tin cơ bản</strong>
+      <strong style={{ fontSize: 16 }}>{title}</strong>
       <form style={{ marginTop: 10 }}>
         <div className="row g-3">
-          <div className="col-md-6">
+          <div className="col-12">
             <div className="form-floating">
               <Input
                 type="text"
                 className="form-control bg-light border-0"
                 id="name"
-                placeholder="Họ & Tên"
+                placeholder="Họ Và Tên"
               />
-              <label for="name">Họ & Tên</label>
+              <label htmlFor="name">Họ Và Tên *</label>
+              <div className="form-text">Bạn ghi đầy đủ dấu và viết IN HOA chữ cái đầu. Ví dụ: Trần Quốc Bảo</div>
             </div>
           </div>
-          <div className="col-md-6">
+          <div className="col-12 col-md-6">
             <div className="form-floating">
               <Input
-                type="email"
+                type="text"
                 className="form-control bg-light border-0"
-                id="email"
-                placeholder="Email"
-              />
-              <label for="email">Email</label>
-            </div>
-          </div>
-          <div className="col-12">
-            <div className="form-floating">
-              <Input
-                type="number"
-                className="form-control bg-light border-0"
-                id="subject"
+                id="phone"
                 placeholder="Số điện thoại"
               />
-              <label for="subject">Số Điện Thoại</label>
+              <label htmlFor="phone">Số Điện Thoại</label>
+              <div className="form-text">Bạn nhập số điện thoại theo cú pháp viết liền KHÔNG CÁCH. VD: 0983336612</div>
+            </div>
+          </div>
+          <div className="col-12 col-md-6">
+            <div className="form-floating">
+              <Input
+                type="text"
+                className="form-control bg-light border-0"
+                id="cccd"
+                placeholder="Căn cước công dân"
+              />
+              <label htmlFor="phone">SỐ CMND/CĂN CƯỚC/HỘ CHIẾU *</label>
+              <div className="form-text">Bạn nhập đầy đủ và chính xác Số CMND/Số Căn Cước/Hộ Chiếu của mình ạ. VD: 025312895</div>
             </div>
           </div>
           <div className="col-12">
-            <Select size="large" className="typeof" defaultValue="Cá Nhân">
-              <Option value="lucy">Cá nhân</Option>
-              <Option value="lucy">Theo nhóm</Option>
-            </Select>
+            <Radio.Group defaultValue="0" buttonStyle="solid" size="large">
+              <Radio.Button value="0">Cá nhân</Radio.Button>
+              <Radio.Button value="1">Nhóm</Radio.Button>
+            </Radio.Group>
           </div>
         </div>
       </form>
