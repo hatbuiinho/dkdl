@@ -44,7 +44,7 @@ export const Header = () => {
       {/* <!-- Navbar Start --> */}
       <nav className="navbar navbar-expand-lg bg-white navbar-light sticky-top py-lg-0 px-4 px-lg-5">
         <a href="/" className="navbar-brand p-0">
-          <h1 className="m-0 text-primary">ĐĂNG KÝ ĐẠI LỄ</h1>
+          <h1 className="m-0 text-primary">CTNPQ</h1>
         </a>
         <button
           type="button"
