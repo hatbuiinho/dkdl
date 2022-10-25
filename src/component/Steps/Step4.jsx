@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Input, Select, Layout, Tabs, Radio, Space } from 'antd';
+import { Input, Select, Layout, Tabs, Radio, Space, Rate, Checkbox } from 'antd';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { message, Upload } from 'antd';
 // import type { UploadChangeParam } from 'antd/es/upload';
@@ -27,11 +27,29 @@ const beforeUpload = (file) => {
     return isJpgOrPng && isLt2M;
 };
 
+// const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
+const desc = ['Chưa lần nào', '1 lần', '2 lần', '3 lần', 'Trên 3 lần'];
+
+const onChange = (checkedValues) => {
+    console.log('checked = ', checkedValues);
+};
+
+// const plainOptions = ['Apple', 'Pear', 'Orange'];
+const options = [
+    { label: 'Cắm hoa', value: 'Cắm hoa' },
+    { label: 'Chưng trái cây nghệ thuật', value: 'Chưng trái cây nghệ thuật' },
+    { label: 'Cắt tỉa trang trí món', value: 'Cắt tỉa trang trí món' },
+    { label: 'Cơ khí', value: 'Cơ khí' },
+    { label: 'Cắt may cơ bản', value: 'Cắt may cơ bản' },
+    { label: 'Ngoại ngữ', value: 'Ngoại ngữ' },
+];
+
 const Step4 = (props) => {
     const history = useHistory();
     const { title } = props;
     const [loading, setLoading] = useState(false);
     const [imageUrl, setImageUrl] = useState();
+    const [value, setValue] = useState(1);
 
     const handleChange = (info) => {
         if (info.file.status === 'uploading') {
@@ -61,27 +79,31 @@ const Step4 = (props) => {
                 <div className="row g-3">
                     <div className="col-md-12">
                         <div className='fw-bold'>Số lần Huynh Đệ đã về chùa công quả *</div>
-                        <div>
-                            {/* <Select size='large' className='typeof' defaultValue="0">
+                        {/* <div> */}
+                        {/* <Select size='large' className='typeof' defaultValue="0">
                                 <Option value="0">Chưa lần nào</Option>
                                 <Option value="1">1 lần</Option>
                                 <Option value="2">2 lần</Option>
                                 <Option value="3">3 lần</Option>
                                 <Option value="4">Trên 3 lần</Option>
                             </Select> */}
-                            <Radio.Group defaultValue="0" buttonStyle="solid" size="large">
+                        {/* <Radio.Group defaultValue="0" buttonStyle="solid" size="large">
                                 <Radio.Button value="0">Chưa lần nào</Radio.Button>
                                 <Radio.Button value="1">1 lần</Radio.Button>
                                 <Radio.Button value="2">2 lần</Radio.Button>
                                 <Radio.Button value="3">3 lần </Radio.Button>
                                 <Radio.Button value="4">Trên 3 lần</Radio.Button>
-                            </Radio.Group>
-                        </div>
+                            </Radio.Group> */}
+                        <span>
+                            <Rate tooltips={desc} onChange={setValue} value={value} />
+                            {value ? <span className="ant-rate-text">{desc[value - 1]}</span> : ''}
+                        </span>
+                        {/* </div> */}
                     </div>
                     <div className="col-md-12">
                         <div className='fw-bold'>KỸ NĂNG, SỞ TRƯỜNG *</div>
                         <div>
-                            <Select size='large' className='typeof' defaultValue="0">
+                            {/* <Select size='large' className='typeof' defaultValue="0">
                                 <Option value="0">Không có</Option>
                                 <Option value="1">Cắm hoa</Option>
                                 <Option value="2">Chưng trái cây nghệ thuật</Option>
@@ -89,7 +111,10 @@ const Step4 = (props) => {
                                 <Option value="4">Cơ khí</Option>
                                 <Option value="5">Cắt may cơ bản</Option>
                                 <Option value="6">Ngoại ngữ</Option>
-                            </Select>
+                            </Select> */}
+                            <Checkbox.Group options={options} defaultValue={[]} onChange={onChange} />
+                            <br />
+                            <br />
                         </div>
                     </div>
                     <div className="col-12">
