@@ -31,9 +31,4 @@ const ROUTES = [
   },
 ];
 
-const Routes = () => {
-  return <div>Routes</div>;
-};
-
 export { ROUTES };
-export default Routes;
