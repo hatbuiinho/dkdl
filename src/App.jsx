@@ -15,7 +15,7 @@ function App() {
         path="/festival"
         needAuth={false}
         component={Festival}
-        layout={FestivalLayout}
+        layout={HomeLayout}
       />
       <AppRoute
         path="/register-result"

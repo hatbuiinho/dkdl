@@ -39,7 +39,7 @@ const CeremonyServingRegister = (props) => {
   return (
     <div className="container-xxl py-5">
       <div className="container">
-        <h1 className="display-5 mb-4 text-center">ĐĂNG KÝ ĐẠI LỄ</h1>
+        {/* <h1 className="display-5 mb-4 text-center">ĐĂNG KÝ ĐẠI LỄ</h1> */}
         <Steps current={stepTemplate[step].current}>
           <Step title="Thông tin cơ bản" icon={<LoginOutlined />} />
           <Step title="Cập nhật thông tin" icon={<SolutionOutlined />} />

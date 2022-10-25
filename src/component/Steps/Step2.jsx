@@ -13,6 +13,26 @@ const Step2 = (props) => {
       <strong style={{ fontSize: 16 }}>{title}</strong>
       <form style={{ marginTop: 10 }}>
           <div className="row g-3">
+            <div className="col-12 col-md-12">
+            <div className='fw-bold'>Vai trò trong nhóm *</div>
+            <Radio.Group defaultValue="0" buttonStyle="solid" size="large">
+              <Radio.Button value="0">Nhóm Trưởng</Radio.Button>
+              <Radio.Button value="1">Nhóm Phó</Radio.Button>
+              <Radio.Button value="2">Thành viên</Radio.Button>
+            </Radio.Group>
+            </div>
+            <div className="col-12 col-md-12">
+              <div className="form-floating">
+                <Input
+                  type="text"
+                  className="form-control bg-light border-0"
+                  id="name"
+                  placeholder="CCCD nhóm trưởng"
+                />
+                <label htmlFor="name">CCCD Nhóm Trưởng</label>
+                <div className="form-text">Nguyễn Văn An (tên nhóm trưởng hiện ra khi check cccd)</div>
+              </div>
+            </div>
             <div className="col-12 col-md-6">
               <div className="form-floating">
                 <Input
