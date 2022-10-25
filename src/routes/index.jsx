@@ -5,6 +5,7 @@ import { HomeLayout } from '../container/Layouts/HomeLayout';
 import { Festival } from '../page/Festival';
 import Home from '../page/Home';
 import RegisterResult from '../page/RegisterResult';
+import { AppRoute } from './AppRoute';
 
 const ROUTES = [
   {
@@ -31,4 +32,4 @@ const ROUTES = [
   },
 ];
 
-export { ROUTES };
+export { ROUTES, AppRoute };

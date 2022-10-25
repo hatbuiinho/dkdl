@@ -2,7 +2,9 @@ import './assets/scss/bootstrap.scss';
 import { Switch } from 'react-router-dom';
 import { ROUTES } from './routes';
 import { Route } from 'react-router-dom';
-import { AppRoute } from './routes/AppRoute';
+import { AppRoute } from './routes';
+import { Empty } from 'antd';
+import NotFound from './page/Error/404';
 
 function App() {
   return (
@@ -10,7 +12,7 @@ function App() {
       {ROUTES.map((route) => (
         <AppRoute key={route.key} {...route} />
       ))}
-      <Route>Page Not Found</Route>
+      <Route component={NotFound} />
     </Switch>
   );
 }
