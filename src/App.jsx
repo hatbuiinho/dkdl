@@ -3,8 +3,7 @@ import { Switch } from 'react-router-dom';
 import { ROUTES } from './routes';
 import { Route } from 'react-router-dom';
 import { AppRoute } from './routes';
-import { Empty } from 'antd';
-import NotFound from './page/Error/404';
+import { NotFound } from './page/Error';
 
 function App() {
   return (
