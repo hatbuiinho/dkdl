@@ -23,7 +23,6 @@ const formItemLayout = {
   },
 };
 
-
 const Step1 = (props) => {
   const { submitStep, title } = props;
   const [form] = Form.useForm();
@@ -36,19 +35,20 @@ const Step1 = (props) => {
     console.log('Xảy ra lỗi:', errorInfo);
   };
 
-  const [registerType, setRegisterType] = useState(0);
+  // const [registerType, setRegisterType] = useState(0);
 
   // handle event
-  const handleRegisterType = (e) => {
-    console.log(e.target.value);
-    setRegisterType(e.target.type);
-  }
+  // const handleRegisterType = (e) => {
+  //   console.log(e.target.value);
+  //   setRegisterType(e.target.type);
+  // }
 
   return (
     <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
       <strong style={{ fontSize: 16 }}>{title}</strong>
+      {/* CeremonyServingRegister step 1 */}
       <Form
-        name="CeremonyServingRegister"
+        name="CerSerRegStep1"
         form={form}
         {...formItemLayout}
         onFinish={onFinish}
@@ -76,8 +76,8 @@ const Step1 = (props) => {
         </Form.Item>
         <Form.Item
           name="cccd"
-          label="Số CMND/Căn Cước/Hộ Chiếu"
-          rules={[{ required: true, message: 'Bắt buộc nhập số CMND/Căn Cước/Hộ Chiếu!' }]}
+          label="Số Căn Cước/Hộ Chiếu"
+          rules={[{ required: true, message: 'Bắt buộc nhập số Căn Cước/Hộ Chiếu!' }]}
           tooltip="Bạn nhập đầy đủ và chính xác Số CMND/Căn Cước/Hộ Chiếu của mình ạ. Ví dụ: 025312895"
         >
           <Input style={{ width: '100%' }} placeholder="Ví dụ: 025312895" />
@@ -87,7 +87,7 @@ const Step1 = (props) => {
           label="Hình thức đăng ký"
           rules={[{ required: true, message: 'Xin hãy chọn hình thức đăng ký!' }]}
         >
-          <Radio.Group buttonStyle="solid" size="large" onChange={handleRegisterType}>
+          <Radio.Group buttonStyle="solid">
             {registerTypeList != null && registerTypeList.map(
               item => <Radio.Button value={item.id} key={item.id}>{item.name}</Radio.Button>
             )}
