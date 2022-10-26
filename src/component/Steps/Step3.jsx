@@ -1,133 +1,135 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Input, Select, Layout, Tabs, Radio, Space } from 'antd';
-import departLocationList from "./data/departLocations.json";
-import timeToStartList from "./data/timeToStarts.json";
-import timeToReturnList from "./data/timeToReturns.json";
+import { Input, Select, Layout, Tabs, Radio, Space, Form, Button } from 'antd';
 
 const { Content } = Layout;
 const { TabPane } = Tabs;
 const { Option } = Select;
+// nơi xuất phát
+const departLocationList = [
+  { id: 0, code: "tutuc", name: "Tự túc" },
+  { id: 1, code: "hcm-nonglam", name: "Bến xe buýt Trường Đại học Nông Lâm" },
+  { id: 2, code: "hcm-bdt", name: "Cầu Bùi Đình Túy, số 47 Bùi Đình Túy, P.24, Q. Bình Thạnh, Tp.HCM" }
+];
+// thời điểm khởi hành
+const timeToStartList = [
+  { id: 0, code: "tutuc", name: "Tự túc" },
+  { id: 1, code: "dot1", name: "Đợt 1: 19h45 Thứ hai, ngày 08/08/2022" },
+  { id: 2, code: "dot2", name: "Đợt 2: 19h45 Thứ ba, ngày 09/08/2022 (Đợt chính thức)" },
+  { id: 3, code: "dot3", name: "Đợt 3: 06h00 Thứ tư, ngày 10/08/2022" }
+];
+
+// thời điểm về lại nơi xuất phát
+const timeToReturnList = [
+  { id: 0, code: "tutuc", name: "Tự túc" },
+  { id: 1, code: "dot1", name: "Đợt 1: 18h00 Thứ sáu, ngày 12/08/2022" },
+  { id: 2, code: "dot2", name: "Đợt 2: 18h00 Chủ nhật, ngày 14/08/2022" }
+];
+
+const formItemLayout = {
+  labelCol: {
+    xs: { span: 24 },
+    sm: { span: 8 },
+  },
+  wrapperCol: {
+    xs: { span: 24 },
+    sm: { span: 16 },
+  },
+};
 
 const Step3 = (props) => {
   // const history = useHistory();
   const { submitStep, title } = props;
   // nơi xuất phát
-  const [departLocation, setDepartLocation] = useState(departLocationList[0].id);
-  const [timeToStart, setTimeToStart] = useState(0);
-  const [timeToReturn, setTimeToReturn] = useState(0);
+  // const [departLocation, setDepartLocation] = useState(departLocationList[0].id);
+  // const [timeToStart, setTimeToStart] = useState(0);
+  // const [timeToReturn, setTimeToReturn] = useState(0);
+  const [form] = Form.useForm();
+  const onFinish = (values) => {
+    console.log('giá trị nhập: ', values);
+    submitStep(values);
+  };
+
+  const onFinishFailed = (errorInfo) => {
+    console.log('Xảy ra lỗi:', errorInfo);
+  };
 
   // handle event start
-  const handleChangeDepartLocation = (value) => {
-    console.log('departLocation', value);
-    setDepartLocation(value);
-  };
+  // const handleChangeDepartLocation = (value) => {
+  //   console.log('departLocation', value);
+  //   setDepartLocation(value);
+  // };
 
-  const handleChangeTimeToStart = (value) => {
-    console.log('timeToStart', value);
-    setTimeToStart(value);
-  };
+  // const handleChangeTimeToStart = (value) => {
+  //   console.log('timeToStart', value);
+  //   setTimeToStart(value);
+  // };
 
-  const handleChangesTimeToReturn = (value) => {
-    console.log('timeToReturn', value);
-    setTimeToReturn(value);
-  };
+  // const handleChangesTimeToReturn = (value) => {
+  //   console.log('timeToReturn', value);
+  //   setTimeToReturn(value);
+  // };
   // handle event end
 
   return (
     <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
       <strong style={{ fontSize: 16 }}>{title}</strong>
-      <form style={{ marginTop: 10 }}>
-        <div className="row g-3">
-          <div className="col-12 col-md-12">
-            <div className='fw-bold'>ĐỊA ĐIỂM XUẤT PHÁT *</div>
-            {/* <Radio.Group onChange={onChange} value={value}>
-              <Space direction="vertical">
-                <Radio value={1}>Bến xe buýt Trường Đại học Nông Lâm</Radio>
-                <Radio value={2}>Cầu Bùi Đình Túy, số 47 Bùi Đình Túy, P.24, Q. Bình Thạnh, Tp.HCM</Radio>
-                <Radio value={3}>Tự túc</Radio>
-                <Radio value={4}>
-                  khác...
-                  {value === 4 ? <Input style={{ width: 100, marginLeft: 10 }} /> : null}
-                </Radio>
-              </Space>
-            </Radio.Group> */}
-            {/* <Radio.Group onChange={handleChangeDepartLocation}>
-              <Space direction="vertical">
-                {departLocationList != null && departLocationList.map(
-                  item => <Radio value={item.id} key={item.id}>{item.name}</Radio>
-                )}
-              </Space>
-            </Radio.Group> */}
-            <div>
-              <Select
-                size='large'
-                className='typeof'
-                defaultValue={departLocation}
-                style={{ width: 240 }}
-                onChange={handleChangeDepartLocation}
-              >
-                {departLocationList != null && departLocationList.map(
-                  item => <Option key={item.id} value={item.id}>{item.name}</Option>
-                )}
-              </Select>
-            </div>
-          </div>
-          <div className="col-12 col-md-12 mt-3">
-            <div className='fw-bold'>THỜI GIAN KHỞI HÀNH VỀ CHÙA</div>
-            {/* <Radio.Group>
-              <Space direction="vertical">
-                <Radio value="{1}">Đợt 1: 19h45 Thứ hai, ngày 08/08/2022</Radio>
-                <Radio value="{2}">Đợt 2: 19h45 Thứ ba, ngày 09/08/2022 (Đợt chính thức)</Radio>
-                <Radio value="{3}">Đợt 3: 06h00 Thứ tư, ngày 10/08/2022</Radio>
-              </Space>
-            </Radio.Group> */}
-            <Radio.Group onChange={handleChangeTimeToStart}>
-              <Space direction="vertical">
-                {timeToStartList != null && timeToStartList.map(
-                  item => <Radio value={item.id} key={item.id}>{item.name}</Radio>
-                )}
-              </Space>
-            </Radio.Group>
-          </div>
-          <div className="col-12 col-md-12 mt-3">
-            <div className='fw-bold'>THỜI GIAN VỀ LẠI TP.HCM CÙNG CTN</div>
-            {/* <Radio.Group>
-              <Space direction="vertical">
-                <Radio value="{1}">Đợt 1: 18h00 Thứ sáu, ngày 12/08/2022</Radio>
-                <Radio value="{2}">Đợt 2: 18h00 Chủ nhật, ngày 14/08/2022</Radio>
-                <Radio value="{3}">
-                  khác...
-                  {"value" === 3
-                    ? <Input style={{ width: 100, marginLeft: 10 }} /> : null}
-                </Radio>
-              </Space>
-            </Radio.Group> */}
-            <Radio.Group onChange={handleChangesTimeToReturn}>
-              <Space direction="vertical">
-                {timeToReturnList != null && timeToReturnList.map(
-                  item => <Radio value={item.id} key={item.id}>{item.name}</Radio>
-                )}
-              </Space>
-            </Radio.Group>
-          </div>
-        </div>
-      </form>
-      <div className="col-12" style={{ marginTop: 10 }}>
-        <button
-          className="btn btn-primary w-100 py-3"
-          type="submit"
-          onClick={() => {
-            submitStep();
-          }}
+      {/* CeremonyServingRegister step 3 */}
+      <Form
+        name="CerSerRegStep3"
+        form={form}
+        {...formItemLayout}
+        onFinish={onFinish}
+        initialValues={{
+          // 'registerType': 0,
+        }}
+        onFinishFailed={onFinishFailed}
+        scrollToFirstError
+      >
+        <Form.Item
+          name="departLocation"
+          label="Nơi xuất phát"
+          hasFeedback
+          rules={[{ required: true, message: 'Xin hãy chọn nơi xuất phát!' }]}
         >
-          Tiếp Tục
-        </button>
-      </div>
+          <Select placeholder="Chọn nơi xuất phát">
+            {departLocationList != null && departLocationList.map(
+              item => <Option key={item.id} value={item.id}>{item.name}</Option>
+            )}
+          </Select>
+        </Form.Item>
+        <Form.Item
+          name="timeToStart"
+          label="Thời gian khởi hành về chùa"
+          hasFeedback
+          rules={[{ required: true, message: 'Xin hãy chọn thời gian khởi hành!' }]}
+        >
+          <Select placeholder="Chọn thời gian khởi hành">
+            {timeToStartList != null && timeToStartList.map(
+              item => <Radio value={item.id} key={item.id}>{item.name}</Radio>
+            )}
+          </Select>
+        </Form.Item>
+        <Form.Item
+          name="timeToReturn"
+          label="Thời gian trở về nơi xuất phát"
+          hasFeedback
+          rules={[{ required: true, message: 'Xin hãy chọn thời gian trở về!' }]}
+        >
+          <Select placeholder="Chọn thời gian trở về">
+            {timeToReturnList != null && timeToReturnList.map(
+              item => <Radio value={item.id} key={item.id}>{item.name}</Radio>
+            )}
+          </Select>
+        </Form.Item>
+        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+          <Button type="primary" htmlType="submit">
+            Tiếp theo
+          </Button>
+        </Form.Item>
+      </Form>
     </div>
   );
 };
-
-// const WrappedDynamicRule = Form.create({ name: "dynamic_rule" })(Step3);
 
 export default Step3;
