@@ -24,8 +24,8 @@ const ROUTES = [
     layout: FestivalLayout,
   },
   {
-    key: 'REGISTER_INFO',
-    path: '/register-info',
+    key: 'REGISTER_RESULT',
+    path: '/register-result',
     // needAuth: true,
     component: RegisterResult,
     layout: HeaderLayout,
