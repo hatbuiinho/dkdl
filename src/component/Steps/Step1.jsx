@@ -87,14 +87,14 @@ const Step1 = (props) => {
           label="Hình thức đăng ký"
           rules={[{ required: true, message: 'Xin hãy chọn hình thức đăng ký!' }]}
         >
-          <Radio.Group buttonStyle="solid" size="large" onChange={handleRegisterType}>
+          <Radio.Group buttonStyle="solid" size="large" onChange={handleRegisterType} className="d-flex">
             {registerTypeList != null && registerTypeList.map(
-              item => <Radio.Button value={item.id} key={item.id}>{item.name}</Radio.Button>
+              item => <Radio.Button className='w-100' value={item.id} key={item.id}>{item.name}</Radio.Button>
             )}
           </Radio.Group>
         </Form.Item>
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" className='w-100'>
             Tiếp theo
           </Button>
         </Form.Item>
