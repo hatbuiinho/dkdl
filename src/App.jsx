@@ -13,7 +13,6 @@ function App() {
         <AppRoute key={route.key} {...route} />
       ))}
       <Route component={NotFound} />
-      
     </Switch>
   );
 }
