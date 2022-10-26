@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import { Typography, Avatar, Icon, Input } from 'antd';
+import React from 'react';
+import { Typography, Avatar, Input } from 'antd';
 
 const result = {
   name: 'Đặng Thị Mỹ Trinh',
