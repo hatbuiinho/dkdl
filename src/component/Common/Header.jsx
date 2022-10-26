@@ -43,7 +43,7 @@ export const Header = () => {
 
       {/* <!-- Navbar Start --> */}
       <nav className="navbar navbar-expand-lg bg-white navbar-light sticky-top py-lg-0 px-4 px-lg-5">
-        <a href="index.html" className="navbar-brand p-0">
+        <a href="/" className="navbar-brand p-0">
           <h1 className="m-0 text-primary">CTNPQ</h1>
         </a>
         <button
@@ -56,7 +56,7 @@ export const Header = () => {
         </button>
         <div className="collapse navbar-collapse py-4 py-lg-0" id="navbarCollapse">
           <div className="navbar-nav ms-auto">
-            <a href="index.html" className="nav-item nav-link active">
+            <a href="/" className="nav-item nav-link active">
               Trang chủ
             </a>
             <a href="/festival" className="nav-item nav-link">
