@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Input, Select, Layout, Tabs, Radio, Space, Form, Col, Row, Button } from 'antd';
 
-const { Content } = Layout;
-const { TabPane } = Tabs;
-const { Option } = Select;
+// const { Content } = Layout;
+// const { TabPane } = Tabs;
+// const { Option } = Select;
 
 // hình thức đăng ký
 const registerTypeList = [

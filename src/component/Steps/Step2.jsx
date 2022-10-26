@@ -2,8 +2,8 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Form, Input, Select, Layout, Tabs, Radio, Button, Space, Cascader } from 'antd';
 
-const { Content } = Layout;
-const { TabPane } = Tabs;
+// const { Content } = Layout;
+// const { TabPane } = Tabs;
 const { Option } = Select;
 
 // hình thức đăng ký

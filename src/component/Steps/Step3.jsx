@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Input, Select, Layout, Tabs, Radio, Space, Form, Button } from 'antd';
 
-const { Content } = Layout;
-const { TabPane } = Tabs;
+// const { Content } = Layout;
+// const { TabPane } = Tabs;
 const { Option } = Select;
 // nơi xuất phát
 const departLocationList = [
@@ -106,7 +106,7 @@ const Step3 = (props) => {
         >
           <Select placeholder="Chọn thời gian khởi hành">
             {timeToStartList != null && timeToStartList.map(
-              item => <Radio value={item.id} key={item.id}>{item.name}</Radio>
+              item => <Option value={item.id} key={item.id}>{item.name}</Option>
             )}
           </Select>
         </Form.Item>
@@ -118,7 +118,7 @@ const Step3 = (props) => {
         >
           <Select placeholder="Chọn thời gian trở về">
             {timeToReturnList != null && timeToReturnList.map(
-              item => <Radio value={item.id} key={item.id}>{item.name}</Radio>
+              item => <Option value={item.id} key={item.id}>{item.name}</Option>
             )}
           </Select>
         </Form.Item>
