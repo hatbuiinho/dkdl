@@ -5,7 +5,7 @@ import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { message, Upload } from 'antd';
 // import type { UploadChangeParam } from 'antd/es/upload';
 // import type { RcFile, UploadFile, UploadProps } from 'antd/es/upload/interface';
-
+import departments from './departments.json';
 const { Content } = Layout;
 const { TabPane } = Tabs;
 const { Option } = Select;
@@ -27,30 +27,51 @@ const beforeUpload = (file) => {
     return isJpgOrPng && isLt2M;
 };
 
-// const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
-const desc = ['Chưa lần nào', '1 lần', '2 lần', '3 lần', 'Trên 3 lần'];
+// số lần về chùa công quả
+const descNumberOfServing = ['Chưa lần nào', '1 lần', '2 lần', '3 lần', 'Trên 3 lần'];
 
-const onChange = (checkedValues) => {
-    console.log('checked = ', checkedValues);
-};
-
-// const plainOptions = ['Apple', 'Pear', 'Orange'];
-const options = [
-    { label: 'Cắm hoa', value: 'Cắm hoa' },
-    { label: 'Chưng trái cây nghệ thuật', value: 'Chưng trái cây nghệ thuật' },
-    { label: 'Cắt tỉa trang trí món', value: 'Cắt tỉa trang trí món' },
-    { label: 'Cơ khí', value: 'Cơ khí' },
-    { label: 'Cắt may cơ bản', value: 'Cắt may cơ bản' },
-    { label: 'Ngoại ngữ', value: 'Ngoại ngữ' },
+// kỹ năng sở trường
+const skillOptions = [
+    // { id: 0, label: 'Không có', value: 'Không có' },
+    { id: 1, label: 'Cắm hoa', value: 'Cắm hoa' },
+    { id: 2, label: 'Chưng trái cây nghệ thuật', value: 'Chưng trái cây nghệ thuật' },
+    { id: 3, label: 'Cắt tỉa trang trí món', value: 'Cắt tỉa trang trí món' },
+    { id: 4, label: 'Cơ khí', value: 'Cơ khí' },
+    { id: 5, label: 'Cắt may cơ bản', value: 'Cắt may cơ bản' },
+    { id: 6, label: 'Ngoại ngữ', value: 'Ngoại ngữ' },
 ];
+
+// danh sách ban
+// const departments = [
+//     {id: 1, code: "BV", name: "bảo vệ"},
+//     {id: 2, code: "HD1", name: "hành đường 1"},
+//     {id: 3, code: "HD2", name: "hành đường 2"},
+// ]
 
 const Step4 = (props) => {
     const history = useHistory();
     const { title } = props;
     const [loading, setLoading] = useState(false);
     const [imageUrl, setImageUrl] = useState();
-    const [value, setValue] = useState(1);
+    // số lần về chùa công quả
+    const [numberOfServing, setNumberOfServing] = useState(1);
 
+    
+//     const departments = [
+//         {id: 1, code: "BV", name: "bảo vệ"},
+//         {id: 2, code: "HD1", name: "hành đường 1"},
+//         {id: 3, code: "HD2", name: "hành đường 2"},
+//     ]
+console.log(departments);
+    // handle event start
+    const handleChangeSkillOptions = (checkedValues) => {
+        console.log('checked = ', checkedValues);
+    };
+
+    const handleChangeExpDept = (value) => {
+        console.log(value); // { value: "lucy", key: "lucy", label: "Lucy (101)" }
+    };
+      
     const handleChange = (info) => {
         if (info.file.status === 'uploading') {
             setLoading(true);
@@ -71,6 +92,7 @@ const Step4 = (props) => {
             <div style={{ marginTop: 8 }}>Upload</div>
         </div>
     );
+    // handle event end
 
     return (
         <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -79,55 +101,37 @@ const Step4 = (props) => {
                 <div className="row g-3">
                     <div className="col-md-12">
                         <div className='fw-bold'>Số lần Huynh Đệ đã về chùa công quả *</div>
-                        {/* <div> */}
-                        {/* <Select size='large' className='typeof' defaultValue="0">
-                                <Option value="0">Chưa lần nào</Option>
-                                <Option value="1">1 lần</Option>
-                                <Option value="2">2 lần</Option>
-                                <Option value="3">3 lần</Option>
-                                <Option value="4">Trên 3 lần</Option>
-                            </Select> */}
-                        {/* <Radio.Group defaultValue="0" buttonStyle="solid" size="large">
-                                <Radio.Button value="0">Chưa lần nào</Radio.Button>
-                                <Radio.Button value="1">1 lần</Radio.Button>
-                                <Radio.Button value="2">2 lần</Radio.Button>
-                                <Radio.Button value="3">3 lần </Radio.Button>
-                                <Radio.Button value="4">Trên 3 lần</Radio.Button>
-                            </Radio.Group> */}
                         <span>
-                            <Rate tooltips={desc} onChange={setValue} value={value} />
-                            {value ? <span className="ant-rate-text">{desc[value - 1]}</span> : ''}
+                            <Rate
+                                allowClear={false}
+                                tooltips={descNumberOfServing}
+                                onChange={setNumberOfServing}
+                                value={numberOfServing}
+                                defaultValue={1}
+                            />
+                            {numberOfServing ? <span className="ant-rate-text">{descNumberOfServing[numberOfServing - 1]}</span> : ''}
                         </span>
-                        {/* </div> */}
                     </div>
                     <div className="col-md-12">
                         <div className='fw-bold'>KỸ NĂNG, SỞ TRƯỜNG *</div>
                         <div>
-                            {/* <Select size='large' className='typeof' defaultValue="0">
-                                <Option value="0">Không có</Option>
-                                <Option value="1">Cắm hoa</Option>
-                                <Option value="2">Chưng trái cây nghệ thuật</Option>
-                                <Option value="3">Cắt tỉa trang trí món</Option>
-                                <Option value="4">Cơ khí</Option>
-                                <Option value="5">Cắt may cơ bản</Option>
-                                <Option value="6">Ngoại ngữ</Option>
-                            </Select> */}
-                            <Checkbox.Group options={options} defaultValue={[]} onChange={onChange} />
-                            <br />
-                            <br />
+                            <Checkbox.Group options={skillOptions} defaultValue={[]} onChange={handleChangeSkillOptions} />
                         </div>
                     </div>
                     <div className="col-12">
                         <div className='fw-bold'>HUYNH ĐỆ CÓ KINH NGHIỆM Ở CÔNG VIỆC (BAN) NÀO? *</div>
                         <div>
                             <Select size='large' className='typeof' defaultValue="0">
-                                <Option value="0">Không có</Option>
-                                <Option value="1">Cắm hoa</Option>
+                                {/* <Option value="0">Không có</Option> */}
+                                {/* <Option value="1">Cắm hoa</Option>
                                 <Option value="2">Chưng trái cây nghệ thuật</Option>
                                 <Option value="3">Cắt tỉa trang trí món</Option>
                                 <Option value="4">Cơ khí</Option>
                                 <Option value="5">Cắt may cơ bản</Option>
-                                <Option value="6">Ngoại ngữ</Option>
+                                <Option value="6">Ngoại ngữ</Option> */}
+                                {departments != null && departments.map((dept)=>{
+                                    <Option value={dept.code}>{dept.name}</Option>
+                                })}
                             </Select>
                         </div>
                     </div>

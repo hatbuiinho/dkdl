@@ -8,7 +8,7 @@ const { Option } = Select;
 
 const Step1 = (props) => {
   const { submitStep, title } = props;
-  console.log(title);
+
   return (
     <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
       <strong style={{ fontSize: 16 }}>{title}</strong>

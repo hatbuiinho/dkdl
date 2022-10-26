@@ -59,9 +59,9 @@ const Step2 = (props) => {
             </div>
           </div>
           <div className="col-6 col-md-6">
-            <Radio.Group defaultValue="nam" buttonStyle="solid" size="large">
-              <Radio.Button value="nam">Nam</Radio.Button>
-              <Radio.Button value="nu">Nữ</Radio.Button>
+            <Radio.Group defaultValue="0" buttonStyle="solid" size="large">
+              <Radio.Button value="0">Nam</Radio.Button>
+              <Radio.Button value="1">Nữ</Radio.Button>
             </Radio.Group>
           </div>
           <div className="col-6 col-md-6">
@@ -134,13 +134,6 @@ const Step2 = (props) => {
               />
               <label htmlFor="diaChiCuTru">ĐỊA CHỈ CƯ TRÚ? (nơi ở hiện tại: xã, huyện, tỉnh) *</label>
             </div>
-          </div>
-          <div className="col-12">
-            {/* <Select size='large' className='typeof' defaultValue="Cá Nhân">
-                <Option value="lucy">Cá nhân</Option>
-                <Option value="lucy">Theo nhóm</Option>
-              </Select> */}
-
           </div>
         </div>
       </form>
