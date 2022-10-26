@@ -36,7 +36,7 @@ export const TopNavbar = () => {
       </nav>
       {/* <!-- Navbar End --> */}
       {/* Navbar ant start */}
-      <div className="nav-container">
+      {/* <div className="nav-container">
         <div>
           <p>Home</p>
         </div>
@@ -56,7 +56,7 @@ export const TopNavbar = () => {
             </Menu.Item>
           </Menu>
         </div>
-      </div>
+      </div> */}
       {/* Navbar ant end */}
     </>
   );

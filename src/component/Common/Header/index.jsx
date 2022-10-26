@@ -8,9 +8,9 @@ import { TopNavbar } from './TopNavbar';
 export const Header = () => {
   return (
     <>
-      {/* <Topbar /> */}
-      {/* <TopNavbar /> */}
-      <Navbar />
+      <Topbar />
+      <TopNavbar />
+      {/* <Navbar /> */}
     </>
   );
 };
