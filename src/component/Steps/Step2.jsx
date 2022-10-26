@@ -134,12 +134,13 @@ const Step2 = (props) => {
         <Form.Item
           label="Số Căn Cước/Hộ Chiếu"
           tooltip="Bạn nhập số CMND/Căn Cước/Hộ Chiếu của NHÓM TRƯỞNG ạ"
+          required
         >
           <Form.Item
             name="cccdOfLeader"
             noStyle
             hasFeedback
-            rules={[{ required: true, message: 'Bắt buộc nhập số Căn Cước/Hộ Chiếu!' }]}
+            rules={[{ required: true, message: 'Xin hãy nhập số Căn Cước/Hộ Chiếu!' }]}
           >
             <Input style={{ width: '60%' }} placeholder="Ví dụ: 025312895" />
           </Form.Item>
@@ -148,7 +149,7 @@ const Step2 = (props) => {
         <Form.Item
           label="Họ và tên"
           name="name"
-          rules={[{ required: true, message: 'Bắt buộc nhập họ và tên!' }]}
+          rules={[{ required: true, message: 'Xin hãy nhập họ và tên!' }]}
           tooltip="Bạn ghi đầy đủ dấu và viết IN HOA chữ cái đầu. Ví dụ: Trần Quốc Bảo"
         >
           <Input placeholder="Ví dụ: Trần Quốc Bảo" />
@@ -203,7 +204,7 @@ const Step2 = (props) => {
         <Form.Item
           name="phone"
           label="Số điện thoại"
-          rules={[{ required: true, message: 'Bắt buộc nhập số điện thoại!' }]}
+          rules={[{ required: true, message: 'Xin hãy nhập số điện thoại!' }]}
           tooltip="Bạn nhập số điện thoại theo cú pháp viết liền KHÔNG CÁCH. Ví dụ: 0983336612"
         >
           <Input style={{ width: '100%' }} placeholder="Ví dụ: 0983336612" />
