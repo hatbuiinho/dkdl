@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography, Row, Col, Form } from 'antd';
 import { JobInfo, UserAvatar, PersonalInfo, TripInfo } from './components';
-import ExtraInfo from './components/ExtraInfo';
+import ExtraInfo from './components/Info/ExtraInfo';
 
 const result = {
   name: 'Đặng Thị Mỹ Trinh',
@@ -92,11 +92,17 @@ const RegisterResult = (props) => {
             <UserAvatar name="Tên Huynh Đệ" />
           </Col>
           <Col xs={24} md={16} lg={18}>
-            <div className="row-cols-3">
-              <JobInfo />
-              <TripInfo />
-              <ExtraInfo />
-            </div>
+            <Row gutter={10}>
+              <Col>
+                <JobInfo className="d-flex flex-column border rounded" />
+              </Col>
+              <Col>
+                <TripInfo className="d-flex flex-column border rounded" />
+              </Col>
+              <Col>
+                <ExtraInfo />
+              </Col>
+            </Row>
           </Col>
         </Row>
       </Form>
@@ -105,89 +111,3 @@ const RegisterResult = (props) => {
 };
 
 export default RegisterResult;
-
-{
-  /* <div className="row">
-<div className="col-6 col-md-3  border-end">
-  <div className="d-flex flex-column align-items-center border-bottom pb-2">
-    <Avatar size={100} icon="user" className="mb-2" />
-    <NoBoderInput
-      value={result.name}
-      className="text-center"
-      style={{ background: '#f5f5f5' }}
-    />
-  </div>
-  {/* Ket qua phan ban */
-}
-//   {res.isDuyet ? (
-//     <div
-//       className="d-block badge bg-success p-2 rounded mt-2"
-//       style={{ userSelect: 'none' }}
-//     >
-//       {res.tenBanNguyenVong}
-//     </div>
-//   ) : (
-//     <div
-//       className="d-block badge bg-warning p-2 rounded mt-2"
-//       style={{ userSelect: 'none' }}
-//     >
-//       Đang chờ xét duyệt ban
-//     </div>
-//   )}
-
-//   {/* Đăng ký theo nhóm */}
-//   {res.teamLeader && (
-//     <div
-//       className="d-block badge bg-info p-2 rounded mt-2"
-//       style={{ userSelect: 'none' }}
-//     >
-//       {res.teamLeader != result.name ? `Trưởng nhóm: ${res.teamLeader}` : 'Nhóm'}
-//     </div>
-//   )}
-// </div>
-
-// <div className="col-6 col-md-9 row mx-0 d-flex">
-//   <div className="col-12 col-md-6 col-lg-4 ps-lg-0">
-//     <div className="mb-2">
-//       <div>Giới tính: </div>
-//       <NoBoderInput value={result.gender} placeholder="Giới tính" />
-//     </div>
-//     <div className="mb-2">
-//       <span>Năm sinh: </span>
-//       <NoBoderInput value={result.yob} placeholder="Năm sinh" />
-//     </div>
-//     <div className="mb-2">
-//       <span>CCCD: </span>
-//       <NoBoderInput value={result.cccd} placeholder="CCCD" />
-//     </div>
-//   </div>
-//   <div className="col-12 col-md-6 col-lg-4">
-//     <div className="mb-2">
-//       <div>Số điện thoại: </div>
-//       <NoBoderInput value={result.phone} placeholder="Giới tính" />
-//     </div>
-//     <div className="mb-2">
-//       <span>Email: </span>
-//       <NoBoderInput value={result.email} placeholder="Năm sinh" />
-//     </div>
-//     <div className="mb-2">
-//       <span>Nơi sinh sống và làm việc: </span>
-//       <NoBoderInput value={result.workPlace} placeholder="CCCD" />
-//     </div>
-//   </div>
-//   <div className="col-12 col-md-6 col-lg-4">
-//     <div className="mb-2">
-//       <div>Pháp danh: </div>
-//       <NoBoderInput value={result.buddaName} placeholder="Giới tính" />
-//     </div>
-//     <div className="mb-2">
-//       <span>Email: </span>
-//       <NoBoderInput value={result.email} placeholder="Năm sinh" />
-//     </div>
-//     <div className="mb-2">
-//       <span>Nơi sinh sống và làm việc: </span>
-//       <NoBoderInput value={result.workPlace} placeholder="CCCD" />
-//     </div>
-//   </div>
-// </div>
-// </div> */}
