@@ -1,7 +1,4 @@
-import React from 'react';
-// import ReactWOW from 'react-wow';
-// import LoginPopup from "../Auth/LoginPopup";
-export const Header = () => {
+export const Topbar = () => {
   return (
     <>
       {/* <!-- Topbar Start --> */}
@@ -40,38 +37,6 @@ export const Header = () => {
         </div>
       </div>
       {/* <!-- Topbar End --> */}
-
-      {/* <!-- Navbar Start --> */}
-      <nav className="navbar navbar-expand-lg bg-white navbar-light sticky-top py-lg-0 px-4 px-lg-5">
-        <a href="/" className="navbar-brand p-0">
-          <h1 className="m-0 text-primary">CTNPQ</h1>
-        </a>
-        <button
-          type="button"
-          className="navbar-toggler"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarCollapse"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse py-4 py-lg-0" id="navbarCollapse">
-          <div className="navbar-nav ms-auto">
-            <a href="/" className="nav-item nav-link active">
-              Trang chủ
-            </a>
-            <a href="/festival" className="nav-item nav-link">
-              Thông tin đại lễ
-            </a>
-            <a href="contact.html" className="nav-item nav-link">
-              Liên hệ
-            </a>
-          </div>
-          <a href="" className="btn btn-primary">
-            Đăng nhập<i className="fa fa-arrow-right ms-3"></i>
-          </a>
-        </div>
-      </nav>
-      {/* <!-- Navbar End --> */}
     </>
   );
 };
