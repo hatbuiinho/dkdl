@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Input, Select, Layout, Tabs, Radio, Space, Form, Button } from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
+import {actFetchAddInfoStep3 } from "./modules/action";
 
 // const { Content } = Layout;
 // const { TabPane } = Tabs;
@@ -40,9 +42,16 @@ const formItemLayout = {
 const Step3 = (props) => {
   // const history = useHistory();
   const { submitStep, title } = props;
+  // lấy data từ redux
+  const memberInfo = useSelector(state => state.registerReducer.data);
+  console.log("thông tin member step3: ", memberInfo);
+  const dispatch = useDispatch();
+  
   const [form] = Form.useForm();
   const onFinish = (values) => {
     console.log('giá trị nhập: ', values);
+    const action = actFetchAddInfoStep3(values);
+    dispatch(action);
     submitStep(values);
   };
 

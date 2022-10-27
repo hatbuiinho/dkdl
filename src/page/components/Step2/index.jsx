@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Form, Input, Select, Layout, Tabs, Radio, Button, Space, Cascader } from 'antd';
 import { REGEX_PHONE } from "../../../utils/common";
 import { useDispatch, useSelector } from 'react-redux';
+import {actFetchAddInfoStep2 } from "./modules/action";
 
 // const { Content } = Layout;
 // const { TabPane } = Tabs;
@@ -92,7 +93,7 @@ const youthAssociationList = [
   { id: 999, code: "khongchon", name: "Chưa có" },
 ];
 // tổ
-const groupList = [
+const groupOfYouthAssociationList = [
   { id: 1, code: "to1", name: "Tổ 1" },
   { id: 2, code: "to2", name: "Tổ 2" },
   { id: 3, code: "to3", name: "Tổ 3" },
@@ -116,12 +117,16 @@ const formItemLayout = {
 const Step2 = (props) => {
   const { submitStep, title } = props;
   // lấy data từ redux
-  const memberInfo = useSelector(state => state.registerStep2Reducer.data);
-  console.log("member: ", memberInfo);
+  const memberInfo = useSelector(state => state.registerReducer.data);
+  console.log("thông tin member step2: ", memberInfo);
+  const dispatch = useDispatch();
+
   const [form] = Form.useForm();
   const onFinish = (values) => {
     console.log('giá trị nhập: ', values);
-    submitStep(values);
+    const action = actFetchAddInfoStep2(values);
+    dispatch(action);
+    submitStep();
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -138,8 +143,18 @@ const Step2 = (props) => {
         {...formItemLayout}
         onFinish={onFinish}
         initialValues={{
-          'roleInGroup': 0,
-          'gender': 0,
+          'roleInGroup': memberInfo ? memberInfo.roleInGroup : 0,
+          'citizenIdOfLeader': memberInfo ? memberInfo.citizenIdOfLeader : '',
+          'name': memberInfo ? memberInfo.name : '',
+          'buddhistName': memberInfo ? memberInfo.buddhistName : '',
+          'gender': memberInfo ? memberInfo.gender : 0,
+          'dayOfBirth': memberInfo ? memberInfo.dayOfBirth : '',
+          'email': memberInfo ? memberInfo.email : '',
+          'phone': memberInfo ? memberInfo.phone : '',
+          // 'permanentAddress': memberInfo ? memberInfo.permanentAddress : '',
+          // 'temporaryAddress': memberInfo ? memberInfo.temporaryAddress : '',
+          'youthAssociation': memberInfo ? memberInfo.youthAssociation : '',
+          'groupOfYouthAssociation': memberInfo ? memberInfo.groupOfYouthAssociation : '',
         }}
         onFinishFailed={onFinishFailed}
         scrollToFirstError
@@ -148,6 +163,7 @@ const Step2 = (props) => {
           name="roleInGroup"
           label="Vai trò trong nhóm"
           rules={[{ required: true, message: 'Xin hãy chọn hình thức đăng ký!' }]}
+          hidden={memberInfo.registerType === 1 ? false : true}
         >
           <Radio.Group buttonStyle="solid">
             {roleInGroupList != null && roleInGroupList.map(
@@ -159,6 +175,7 @@ const Step2 = (props) => {
           label="Số Căn Cước/Hộ Chiếu"
           tooltip="Bạn nhập số CMND/Căn Cước/Hộ Chiếu của NHÓM TRƯỞNG ạ"
           required
+          hidden={memberInfo.registerType === 1 ? false : true}
         >
           <Form.Item
             name="citizenIdOfLeader"
@@ -168,7 +185,7 @@ const Step2 = (props) => {
           >
             <Input style={{ width: '60%' }} placeholder="Ví dụ: 025312895" />
           </Form.Item>
-          <span className="ant-form-text" style={{ marginLeft: 5 }}>Nguyễn Văn Nhật</span>
+          <span className="ant-form-text" style={{ marginLeft: 5 }}>{memberInfo ? memberInfo.nameOfLeader : ''}</span>
         </Form.Item>
         <Form.Item
           label="Họ và tên"
@@ -223,7 +240,7 @@ const Step2 = (props) => {
             },
           ]}
         >
-          <Input placeholder='ví dụ: abc@gmail.com'/>
+          <Input placeholder='ví dụ: abc@gmail.com' />
         </Form.Item>
         <Form.Item
           name="phone"
@@ -268,13 +285,13 @@ const Step2 = (props) => {
           </Select>
         </Form.Item>
         <Form.Item
-          name="group"
+          name="groupOfYouthAssociation"
           label="Tổ"
           hasFeedback
-          rules={[{ required: true, message: 'Xin hãy chọn tổ!' }]}
+          rules={[{ required: false }]}
         >
           <Select placeholder="Chọn tổ">
-            {groupList != null && groupList.map(
+            {groupOfYouthAssociationList != null && groupOfYouthAssociationList.map(
               item => <Option value={item.id} key={item.id}>{item.name}</Option>
             )}
           </Select>

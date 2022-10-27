@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Input, Select, Layout, Tabs, Radio, Space, Rate, Checkbox, Col, Row, Form, Button, Upload, message, Image } from 'antd';
 import { LoadingOutlined, PlusOutlined, UploadOutlined } from '@ant-design/icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { actFetchRegisterMember } from "./modules/action";
 
 // const { Content } = Layout;
 // const { TabPane } = Tabs;
@@ -66,9 +68,16 @@ const normFile = (e) => {
 const Step4 = (props) => {
     const history = useHistory();
     const { title } = props;
+    // lấy data từ redux
+    const memberInfo = useSelector(state => state.registerReducer.data);
+    console.log("thông tin member step4: ", memberInfo);
+    const dispatch = useDispatch();
+
     const [form] = Form.useForm();
     const onFinish = (values) => {
         console.log('giá trị nhập: ', values);
+        const action = actFetchRegisterMember(values);
+        dispatch(action);
         history.push('/login');
     };
 
@@ -165,9 +174,9 @@ const Step4 = (props) => {
                         <Upload name="logo" action="/upload.do" listType="picture">
                             <Button icon={<UploadOutlined />}>Chọn ảnh tải lên</Button>
                         </Upload>
-                        <span>Ảnh chụp chân dung bằng điện thoại với nền đơn sắc, rõ nét, chính diện hoặc ảnh chụp hình thẻ 3x4 (mới nhất)</span>
-                        <Image width={200} src="/images/anh-mau.png" alt='ảnh mẫu'/>
                     </Form.Item>
+                    <span>Ảnh chụp chân dung bằng điện thoại với nền đơn sắc, rõ nét, chính diện hoặc ảnh chụp hình thẻ 3x4 (mới nhất)</span>
+                    <Image width={200} src="/images/anh-mau.png" alt='ảnh mẫu' />
                 </Form.Item>
                 <Form.Item
                     label="Ghi chú"

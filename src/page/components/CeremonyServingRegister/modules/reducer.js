@@ -1,4 +1,10 @@
-import { REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILED } from './constant';
+import {
+  REGISTER_REQUEST,
+  REGISTER_SUCCESS,
+  REGISTER_FAILED,
+  REGISTER_ADD_INFO_STEP2,
+  REGISTER_ADD_INFO_STEP3
+} from './constant';
 
 let initialState = {
   loading: false,
@@ -25,6 +31,20 @@ const registerReducer = (state = initialState, action) => {
       // state.data = null;
       // state.error = action.payload;
       return { ...state, loading: false, data: null, error: action.payload };
+
+    case REGISTER_ADD_INFO_STEP2: {
+      // let newData = {...state.data};
+      const moreInfo = action.payload;
+      let newData = { ...state.data, moreInfo };
+      return { ...state, newData };
+    }
+
+    case REGISTER_ADD_INFO_STEP3: {
+      // let newData = {...state.data};
+      const moreInfo = action.payload;
+      let newData = { ...state.data, moreInfo };
+      return { ...state, newData };
+    }
 
     default:
       return { ...state };

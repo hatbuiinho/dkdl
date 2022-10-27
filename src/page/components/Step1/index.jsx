@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Input, Select, Layout, Tabs, Radio, Space, Form, Col, Row, Button } from 'antd';
 import { REGEX_PHONE } from "../../../utils/common";
 import { useDispatch, useSelector } from 'react-redux';
-import { actFetchRegister } from "./modules/action";
+import { actFetchCheckInfo } from "./modules/action";
 // const { Content } = Layout;
 // const { TabPane } = Tabs;
 // const { Option } = Select;
@@ -28,15 +28,14 @@ const formItemLayout = {
 const Step1 = (props) => {
   const { submitStep, title } = props;
   const [form] = Form.useForm();
-
-  // dispatch
   const dispatch = useDispatch();
 
   const onFinish = (values) => {
     console.log('giá trị nhập: ', values);
-    // submitStep(values);
-    const action = actFetchRegister(values);
+    
+    const action = actFetchCheckInfo(values);
     dispatch(action);
+    submitStep();
   };
 
   const onFinishFailed = (errorInfo) => {

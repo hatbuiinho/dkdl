@@ -5,37 +5,45 @@ import {
 } from "./constant";
 import Axios from "axios";
 
-export const actFetchMemberDetail = (id) => {
+export const actFetchRegister = (values) => {
   /**
    * Gọi api trong này
    */
   return (dispatch) => {
-    dispatch(actMemberDetailRequest());
-    const url = `hhttp://apiv2.multiservices.tk/api/v1/Member/add`;
-    Axios.get(url)
+    dispatch(actRegisterRequest());
+    console.log("action tổng data", values);
+    const url = `http://apiv2.multiservices.tk/api/v1/Member/add`;
+    Axios({
+      url,
+      method: "POST",
+      data: values,
+      // headers: {
+      //   Authorization: `Bearer ${accessToken}`,
+      // },
+    })
       .then((result) => {
-        dispatch(actMemberDetailSuccess(result.data));
+        dispatch(actRegisterSuccess(result.data));
       })
       .catch((error) => {
-        dispatch(actMemberDetailFailed(error));
+        dispatch(actRegisterFailed(error.message));
       });
   };
 };
 
-const actMemberDetailRequest = () => {
+const actRegisterRequest = () => {
   return {
     type: REGISTER_REQUEST,
   };
 };
 
-const actMemberDetailSuccess = (data) => {
+const actRegisterSuccess = (data) => {
   return {
     type: REGISTER_SUCCESS,
     payload: data,
   };
 };
 
-const actMemberDetailFailed = (error) => {
+const actRegisterFailed = (error) => {
   return {
     type: REGISTER_FAILED,
     payload: error,
