@@ -5,6 +5,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import CeremonyServingRegister from '../../component/CeremonyServingRegister';
 import './style.scss';
+import LoginPopup from '../Auth/LoginPopup';
 import { Carousel } from 'antd';
 
 export class Home extends React.Component {
@@ -13,29 +14,6 @@ export class Home extends React.Component {
       <div>
         <Helmet>
           <title>Chúng thanh niên phật quang</title>
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Quicksand:wght@600;700&display=swap"
-            rel="stylesheet" />
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
-        <link href="zoofari/lib/animate/animate.min.css" rel="stylesheet" />
-        <link href="zoofari/lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
-        <link href="zoofari/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
-        <link href="zoofari/css/bootstrap.min.css" rel="stylesheet" />
-        <link href="zoofari/css/style.css" rel="stylesheet" />
-          {/* <!-- Google Web Fonts --> */}
-
-          <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="zoofari/lib/wow/wow.min.js"></script>
-<script src="zoofari/lib/easing/easing.min.js"></script>
-<script src="zoofari/lib/waypoints/waypoints.min.js"></script>
-<script src="zoofari/lib/counterup/counterup.min.js"></script>
-<script src="zoofari/lib/owlcarousel/owl.carousel.min.js"></script>
-<script src="zoofari/lib/lightbox/js/lightbox.min.js"></script>
-<script src="zoofari/js/main.js"></script>
-
         </Helmet>
         {/* <Content> */}
         {/* <!-- Spinner Start --> */}
@@ -54,6 +32,7 @@ export class Home extends React.Component {
         {/* <!-- Spinner End --> */}
 
         {/* <!-- Video Modal Start --> */}
+        <LoginPopup />
         <div
           className="modal modal-video fade"
           id="videoModal"
