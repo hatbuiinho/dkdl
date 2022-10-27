@@ -21,7 +21,7 @@ const ROUTES = [
     path: '/festival',
     needAuth: false,
     component: Festival,
-    layout: FestivalLayout,
+    layout: HomeLayout,
   },
   {
     key: 'REGISTER_RESULT',

@@ -13,7 +13,29 @@ export class Home extends React.Component {
       <div>
         <Helmet>
           <title>Chúng thanh niên phật quang</title>
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Quicksand:wght@600;700&display=swap"
+            rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <link href="zoofari/lib/animate/animate.min.css" rel="stylesheet" />
+        <link href="zoofari/lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
+        <link href="zoofari/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+        <link href="zoofari/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="zoofari/css/style.css" rel="stylesheet" />
           {/* <!-- Google Web Fonts --> */}
+
+          <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="zoofari/lib/wow/wow.min.js"></script>
+<script src="zoofari/lib/easing/easing.min.js"></script>
+<script src="zoofari/lib/waypoints/waypoints.min.js"></script>
+<script src="zoofari/lib/counterup/counterup.min.js"></script>
+<script src="zoofari/lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="zoofari/lib/lightbox/js/lightbox.min.js"></script>
+<script src="zoofari/js/main.js"></script>
+
         </Helmet>
         {/* <Content> */}
         {/* <!-- Spinner Start --> */}
@@ -30,48 +52,6 @@ export class Home extends React.Component {
       </div>
     </div> */}
         {/* <!-- Spinner End --> */}
-
-        {/* <!-- Header Start --> */}
-        <div className="container-fluid bg-dark p-0 mb-5">
-          <div className="row g-0 flex-column-reverse flex-lg-row">
-            <div className="col-lg-6 p-0">
-              <div className="header-bg h-100 d-flex flex-column justify-content-center p-5">
-                <h1 className="display-4 text-light mb-5">
-                  Đại lễ phật thành đạo 2022 - PL. 2565
-                </h1>
-                <div className="d-flex align-items-center pt-4 animated slideInDown">
-                  {/* <a href="" className="btn btn-primary py-sm-3 px-3 px-sm-5 me-5"
-                >Read More</a
-              > */}
-                  <button
-                    type="button"
-                    className="btn-play"
-                    data-bs-toggle="modal"
-                    data-src="https://www.youtube.com/embed/l9R_L65ssE0"
-                    data-bs-target="#videoModal"
-                  >
-                    <span></span>
-                  </button>
-                  <h6 className="text-white m-0 ms-4 d-none d-sm-block">Xem video</h6>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-6">
-              <Carousel autoplay draggable>
-                <div className="item">
-                  <img className="img-fluid" src="/img/carousel-1.jpg" alt="" />
-                </div>
-                <div className="item">
-                  <img className="img-fluid" src="/img/carousel-2.jpg" alt="" />
-                </div>
-                <div className="item">
-                  <img className="img-fluid" src="/img/carousel-3.jpg" alt="" />
-                </div>
-              </Carousel>
-            </div>
-          </div>
-        </div>
-        {/* <!-- Header End --> */}
 
         {/* <!-- Video Modal Start --> */}
         <div
@@ -115,6 +95,43 @@ export class Home extends React.Component {
         {/* <!-- About Start --> */}
         <CeremonyServingRegister submitTarget="/register-result" />
         {/* <!-- About End --> */}
+
+        <div className="container-xxl p-0 mb-5">
+          <div className="row g-0 mx-auto">
+            <div className="col-xl-6 col-lg-12 col-md-12 col-sm-12 p-0 wow fadeIn" data-wow-delay="0.1s">
+              <div className="header-bg h-100 d-flex flex-column p-5">
+                <h1 className="display-4 text-light mb-5">
+                  Đại lễ phật thành đạo 2022 - PL. 2565
+                </h1>
+                <div className="d-flex align-items-center pt-4 animated slideInDown">
+                  <button
+                    type="button"
+                    className="btn btn-primary py-sm-3 px-3 px-sm-5 me-5"
+                    data-bs-toggle="modal"
+                    data-src="https://www.youtube.com/embed/l9R_L65ssE0"
+                    data-bs-target="#videoModal"
+                  >
+                    <span>Xem video</span>
+                  </button>
+                  <h6 className="text-white m-0 ms-4 d-none d-sm-block">Xem video</h6>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-6">
+              <Carousel autoplay draggable>
+                <div className="item">
+                  <img className="img-fluid" src="/img/carousel-1.jpg" alt="" />
+                </div>
+                <div className="item">
+                  <img className="img-fluid" src="/img/carousel-2.jpg" alt="" />
+                </div>
+                <div className="item">
+                  <img className="img-fluid" src="/img/carousel-3.jpg" alt="" />
+                </div>
+              </Carousel>
+            </div>
+          </div>
+        </div>
 
         {/* <!-- Facts Start --> */}
         <div className="container-xxl bg-primary facts my-5 py-5">
@@ -341,70 +358,6 @@ export class Home extends React.Component {
             </div>
           </div>
         </div>
-        {/* <!-- Visiting Hours End --> */}
-
-        {/* <!-- Testimonial Start --> */}
-        <div className="container-xxl py-5">
-          <div className="container">
-            <h1 className="display-5 text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
-              Người nổi tiếng tham gia!
-            </h1>
-            <div
-              className="owl-carousel testimonial-carousel wow fadeInUp"
-              data-wow-delay="0.1s"
-            >
-              <div className="testimonial-item text-center">
-                <img
-                  className="img-fluid rounded-circle border border-2 p-2 mx-auto mb-4"
-                  src="/img/testimonial-1.jpg"
-                  style={{ width: 100, height: 100 }}
-                />
-                <div className="testimonial-text rounded text-center p-4">
-                  <p>
-                    Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo
-                    labore sed sed. Magna ut diam sit et amet stet eos sed clita erat
-                    magna elitr erat sit sit erat at rebum justo sea clita.
-                  </p>
-                  <h5 className="mb-1">Patient Name</h5>
-                  <span className="fst-italic">Profession</span>
-                </div>
-              </div>
-              <div className="testimonial-item text-center">
-                <img
-                  className="img-fluid rounded-circle border border-2 p-2 mx-auto mb-4"
-                  src="/img/testimonial-2.jpg"
-                  style={{ width: 100, height: 100 }}
-                />
-                <div className="testimonial-text rounded text-center p-4">
-                  <p>
-                    Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo
-                    labore sed sed. Magna ut diam sit et amet stet eos sed clita erat
-                    magna elitr erat sit sit erat at rebum justo sea clita.
-                  </p>
-                  <h5 className="mb-1">Patient Name</h5>
-                  <span className="fst-italic">Profession</span>
-                </div>
-              </div>
-              <div className="testimonial-item text-center">
-                <img
-                  className="img-fluid rounded-circle border border-2 p-2 mx-auto mb-4"
-                  src="/img/testimonial-3.jpg"
-                  style={{ width: 100, height: 100 }}
-                />
-                <div className="testimonial-text rounded text-center p-4">
-                  <p>
-                    Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo
-                    labore sed sed. Magna ut diam sit et amet stet eos sed clita erat
-                    magna elitr erat sit sit erat at rebum justo sea clita.
-                  </p>
-                  <h5 className="mb-1">Patient Name</h5>
-                  <span className="fst-italic">Profession</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* <!-- Testimonial End --> */}
 
         {/* <!-- Back to Top --> */}
         <a href="#" className="btn btn-lg btn-primary btn-lg-square back-to-top">

@@ -43,7 +43,7 @@ const CeremonyServingRegister = (props) => {
         <Steps current={stepTemplate[step].current}>
           <Step title="Thông tin cơ bản" icon={<LoginOutlined />} />
           <Step title="Cập nhật thông tin" icon={<SolutionOutlined />} />
-          <Step title="Lịch trình" icon={<SmileOutlined />} />
+          <Step title="Lịch trình" icon={<ScheduleOutlined />} />
           <Step title="Công việc" icon={<SmileOutlined />} />
         </Steps>
         <div className="row g-3 justify-content-center" style={{ marginTop: 20 }}>

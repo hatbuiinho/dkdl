@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 // import LoginPopup from "../Auth/LoginPopup";
 export const Footer = () => {
   return (
