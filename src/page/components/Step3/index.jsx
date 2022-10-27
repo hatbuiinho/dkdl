@@ -40,10 +40,6 @@ const formItemLayout = {
 const Step3 = (props) => {
   // const history = useHistory();
   const { submitStep, title } = props;
-  // nơi xuất phát
-  // const [departLocation, setDepartLocation] = useState(departLocationList[0].id);
-  // const [timeToStart, setTimeToStart] = useState(0);
-  // const [timeToReturn, setTimeToReturn] = useState(0);
   const [form] = Form.useForm();
   const onFinish = (values) => {
     console.log('giá trị nhập: ', values);
@@ -53,23 +49,6 @@ const Step3 = (props) => {
   const onFinishFailed = (errorInfo) => {
     console.log('Xảy ra lỗi:', errorInfo);
   };
-
-  // handle event start
-  // const handleChangeDepartLocation = (value) => {
-  //   console.log('departLocation', value);
-  //   setDepartLocation(value);
-  // };
-
-  // const handleChangeTimeToStart = (value) => {
-  //   console.log('timeToStart', value);
-  //   setTimeToStart(value);
-  // };
-
-  // const handleChangesTimeToReturn = (value) => {
-  //   console.log('timeToReturn', value);
-  //   setTimeToReturn(value);
-  // };
-  // handle event end
 
   return (
     <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -100,11 +79,11 @@ const Step3 = (props) => {
         </Form.Item>
         <Form.Item
           name="timeToStart"
-          label="Thời gian khởi hành về chùa"
+          label="Thời gian khởi hành"
           hasFeedback
           rules={[{ required: true, message: 'Xin hãy chọn thời gian khởi hành!' }]}
         >
-          <Select placeholder="Chọn thời gian khởi hành">
+          <Select placeholder="Chọn thời gian khởi hành về chùa">
             {timeToStartList != null && timeToStartList.map(
               item => <Option value={item.id} key={item.id}>{item.name}</Option>
             )}
@@ -112,11 +91,11 @@ const Step3 = (props) => {
         </Form.Item>
         <Form.Item
           name="timeToReturn"
-          label="Thời gian trở về nơi xuất phát"
+          label="Thời gian trở về"
           hasFeedback
           rules={[{ required: true, message: 'Xin hãy chọn thời gian trở về!' }]}
         >
-          <Select placeholder="Chọn thời gian trở về">
+          <Select placeholder="Chọn thời gian trở về nơi xuất phát">
             {timeToReturnList != null && timeToReturnList.map(
               item => <Option value={item.id} key={item.id}>{item.name}</Option>
             )}

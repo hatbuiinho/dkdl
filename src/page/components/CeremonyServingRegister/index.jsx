@@ -1,10 +1,10 @@
 import { Button, message, Steps } from 'antd';
 import { LoginOutlined, SolutionOutlined, SmileOutlined, ScheduleOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
-import Step1 from '../Steps/Step1';
-import Step2 from '../Steps/Step2';
-import Step3 from '../Steps/Step3';
-import Step4 from '../Steps/Step4';
+import Step1 from '../Step1';
+import Step2 from '../Step2';
+import Step3 from '../Step3';
+import Step4 from '../Step4';
 
 const { Step } = Steps;
 
@@ -20,21 +20,21 @@ const CeremonyServingRegister = (props) => {
       template: <Step1 submitStep={submitStep(1)} />,
       current: 0,
     },
-    {
-      title: 'Thông tin đầy đủ',
-      template: <Step2 submitStep={submitStep(2)} />,
-      current: 1,
-    },
-    {
-      title: 'Thông tin đầy đủ',
-      template: <Step3 submitStep={submitStep(3)} />,
-      current: 2,
-    },
-    {
-      title: 'Thông tin đầy đủ',
-      template: <Step4 submitTarget={submitTarget} />,
-      current: 3,
-    },
+    // {
+    //   title: 'Thông tin đầy đủ',
+    //   template: <Step2 submitStep={submitStep(2)} />,
+    //   current: 1,
+    // },
+    // {
+    //   title: 'Thông tin đầy đủ',
+    //   template: <Step3 submitStep={submitStep(3)} />,
+    //   current: 2,
+    // },
+    // {
+    //   title: 'Thông tin đầy đủ',
+    //   template: <Step4 submitTarget={submitTarget} />,
+    //   current: 3,
+    // },
   ];
   return (
     <div className="container-xxl py-5">

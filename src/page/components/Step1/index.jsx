@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Input, Select, Layout, Tabs, Radio, Space, Form, Col, Row, Button } from 'antd';
-
+import { REGEX_PHONE } from "../../../utils/common";
+import { useDispatch, useSelector } from 'react-redux';
+import { actFetchRegister } from "./modules/action";
 // const { Content } = Layout;
 // const { TabPane } = Tabs;
 // const { Option } = Select;
@@ -26,9 +28,15 @@ const formItemLayout = {
 const Step1 = (props) => {
   const { submitStep, title } = props;
   const [form] = Form.useForm();
+
+  // dispatch
+  const dispatch = useDispatch();
+
   const onFinish = (values) => {
     console.log('giá trị nhập: ', values);
-    submitStep(values);
+    // submitStep(values);
+    const action = actFetchRegister(values);
+    dispatch(action);
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -61,13 +69,16 @@ const Step1 = (props) => {
         <Form.Item
           name="phone"
           label="Số điện thoại"
-          rules={[{ required: true, message: 'Xin hãy nhập số điện thoại!' }]}
+          rules={[
+            { required: true, message: 'Xin hãy nhập số điện thoại!' },
+            // { pattern: REGEX_PHONE, message: 'Số điện thoại không hợp lệ!' },
+          ]}
           tooltip="Bạn nhập số điện thoại theo cú pháp viết liền KHÔNG CÁCH. Ví dụ: 0983336612"
         >
           <Input style={{ width: '100%' }} placeholder="Ví dụ: 0983336612" />
         </Form.Item>
         <Form.Item
-          name="cccd"
+          name="citizenId"
           label="Số Căn Cước/Hộ Chiếu"
           rules={[{ required: true, message: 'Xin hãy nhập số Căn Cước/Hộ Chiếu!' }]}
           tooltip="Bạn nhập đầy đủ và chính xác Số CMND/Căn Cước/Hộ Chiếu của mình ạ. Ví dụ: 025312895"
@@ -87,7 +98,7 @@ const Step1 = (props) => {
         </Form.Item>
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
           <Button type="primary" htmlType="submit">
-            Tiếp theo
+            Đăng ký
           </Button>
         </Form.Item>
       </Form>

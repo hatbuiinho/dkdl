@@ -1,0 +1,3 @@
+export const REGISTER_STEP1_REQUEST = "RegisterReducer/REGISTER_STEP1_REQUEST";
+export const REGISTER_STEP1_SUCCESS = "RegisterReducer/REGISTER_STEP1_SUCCESS";
+export const REGISTER_STEP1_FAILED = "RegisterReducer/REGISTER_STEP1_FAILED";

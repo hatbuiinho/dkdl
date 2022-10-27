@@ -1,6 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Form, Input, Select, Layout, Tabs, Radio, Button, Space, Cascader } from 'antd';
+import { REGEX_PHONE } from "../../../utils/common";
+import { useDispatch, useSelector } from 'react-redux';
 
 // const { Content } = Layout;
 // const { TabPane } = Tabs;
@@ -12,6 +14,7 @@ const roleInGroupList = [
   { id: 1, name: "Nhóm phó" },
   { id: 2, name: "Thành viên" },
 ];
+
 // giới tính
 const genderList = [
   { id: 0, name: "Nam" },
@@ -81,6 +84,24 @@ const addressList = [
   },
 ];
 
+// nơi sinh hoạt
+const youthAssociationList = [
+  { id: 1, code: "ctn-hcm", name: "CTN HCM" },
+  { id: 2, code: "ctn-ag", name: "CTN Ang Giang" },
+  { id: 3, code: "ctn-bd", name: "CTN Bình Dương" },
+  { id: 999, code: "khongchon", name: "Chưa có" },
+];
+// tổ
+const groupList = [
+  { id: 1, code: "to1", name: "Tổ 1" },
+  { id: 2, code: "to2", name: "Tổ 2" },
+  { id: 3, code: "to3", name: "Tổ 3" },
+  { id: 4, code: "to4", name: "Tổ 4" },
+  { id: 5, code: "to5", name: "Tổ 5" },
+  { id: 6, code: "to6", name: "Tổ 6" },
+  { id: 999, code: "chuavaoto", name: "Chưa vào tổ" },
+];
+
 const formItemLayout = {
   labelCol: {
     xs: { span: 24 },
@@ -94,6 +115,9 @@ const formItemLayout = {
 
 const Step2 = (props) => {
   const { submitStep, title } = props;
+  // lấy data từ redux
+  const memberInfo = useSelector(state => state.registerStep2Reducer.data);
+  console.log("member: ", memberInfo);
   const [form] = Form.useForm();
   const onFinish = (values) => {
     console.log('giá trị nhập: ', values);
@@ -137,7 +161,7 @@ const Step2 = (props) => {
           required
         >
           <Form.Item
-            name="cccdOfLeader"
+            name="citizenIdOfLeader"
             noStyle
             hasFeedback
             rules={[{ required: true, message: 'Xin hãy nhập số Căn Cước/Hộ Chiếu!' }]}
@@ -199,12 +223,15 @@ const Step2 = (props) => {
             },
           ]}
         >
-          <Input />
+          <Input placeholder='ví dụ: abc@gmail.com'/>
         </Form.Item>
         <Form.Item
           name="phone"
           label="Số điện thoại"
-          rules={[{ required: true, message: 'Xin hãy nhập số điện thoại!' }]}
+          rules={[
+            { required: true, message: 'Xin hãy nhập số điện thoại!' },
+            // { pattern: REGEX_PHONE, message: 'Số điện thoại không hợp lệ!' },
+          ]}
           tooltip="Bạn nhập số điện thoại theo cú pháp viết liền KHÔNG CÁCH. Ví dụ: 0983336612"
         >
           <Input style={{ width: '100%' }} placeholder="Ví dụ: 0983336612" />
@@ -214,19 +241,43 @@ const Step2 = (props) => {
           label="Địa chỉ thường trú"
           tooltip="Địa chỉ theo CCCD"
           rules={[
-            { type: 'array', required: true, message: 'Xin hãy nhập địa chỉ thường trú!' },
+            { type: 'array', required: true, message: 'Xin hãy chọn địa chỉ thường trú!' },
           ]}
         >
-          <Cascader options={addressList} />
+          <Cascader options={addressList} placeholder="Chọn địa chỉ thường trú" />
         </Form.Item>
         <Form.Item
           name="temporaryAddress"
           label="Địa chỉ tạm trú"
           rules={[
-            { type: 'array', required: true, message: 'Xin hãy nhập địa chỉ tạm trú!' },
+            { type: 'array', required: true, message: 'Xin hãy chọn địa chỉ tạm trú!' },
           ]}
         >
-          <Cascader options={addressList} />
+          <Cascader options={addressList} placeholder="Chọn địa chỉ tạm trú" />
+        </Form.Item>
+        <Form.Item
+          name="youthAssociation"
+          label="Nơi sinh hoạt"
+          hasFeedback
+          rules={[{ required: true, message: 'Xin hãy chọn nơi sinh hoạt!' }]}
+        >
+          <Select placeholder="Chọn nơi sinh hoạt">
+            {youthAssociationList != null && youthAssociationList.map(
+              item => <Option value={item.id} key={item.id}>{item.name}</Option>
+            )}
+          </Select>
+        </Form.Item>
+        <Form.Item
+          name="group"
+          label="Tổ"
+          hasFeedback
+          rules={[{ required: true, message: 'Xin hãy chọn tổ!' }]}
+        >
+          <Select placeholder="Chọn tổ">
+            {groupList != null && groupList.map(
+              item => <Option value={item.id} key={item.id}>{item.name}</Option>
+            )}
+          </Select>
         </Form.Item>
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
           <Button type="primary" htmlType="submit">
