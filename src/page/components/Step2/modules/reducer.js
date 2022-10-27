@@ -13,7 +13,7 @@ let initialState = {
     citizenId: '1234567890',
     registerType: 1,
     roleInGroup: 1,
-    citizenIdOfLeader: "1234567890",
+    citizenIdOfLeader: '1234567890',
     nameOfLeader: 'pham van b',
     buddhistName: 'a b c',
     gender: 0,
@@ -77,22 +77,22 @@ let initialState = {
 const registerStep2Reducer = (state = initialState, action) => {
   switch (action.type) {
     case REGISTER_STEP2_REQUEST:
-      state.loading = true;
-      state.data = null;
-      state.error = null;
-      return { ...state };
+      // state.loading = true;
+      // state.data = null;
+      // state.error = null;
+      return { ...state, loading: true, data: null, error: null };
 
     case REGISTER_STEP2_SUCCESS:
-      state.loading = false;
-      state.data = action.payload;
-      state.error = null;
-      return { ...state };
+      // state.loading = false;
+      // state.data = action.payload;
+      // state.error = null;
+      return { ...state, loading: false, data: action.payload, error: null };
 
     case REGISTER_STEP2_FAILED:
-      state.loading = false;
-      state.data = null;
-      state.error = action.payload;
-      return { ...state };
+      // state.loading = false;
+      // state.data = null;
+      // state.error = action.payload;
+      return { ...state, loading: false, data: null, error: action.payload };
 
     default:
       return { ...state };

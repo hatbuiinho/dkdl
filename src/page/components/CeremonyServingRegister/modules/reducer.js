@@ -1,8 +1,4 @@
-import {
-  REGISTER_REQUEST,
-  REGISTER_SUCCESS,
-  REGISTER_FAILED,
-} from "./constant";
+import { REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILED } from './constant';
 
 let initialState = {
   loading: false,
@@ -16,15 +12,13 @@ const registerReducer = (state = initialState, action) => {
       // state.loading = true;
       // state.data = null;
       // state.error = null;
-      return { ...state, loading: true, data: null, error: null};
+      return { ...state, loading: true, data: null, error: null };
 
     case REGISTER_SUCCESS:
       // state.loading = false;
       // state.data = action.payload;
       // state.error = null;
-      const newData = {...state.data};
-      newData = action.payload;
-      return { ...state, loading: false, data: newData, error: null};
+      return { ...state, loading: false, data: action.payload, error: null };
 
     case REGISTER_FAILED:
       // state.loading = false;

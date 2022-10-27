@@ -11,7 +11,7 @@ export const actFetchMemberDetail = (id) => {
    */
   return (dispatch) => {
     dispatch(actMemberDetailRequest());
-    const url = `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`;
+    const url = `hhttp://apiv2.multiservices.tk/api/v1/Member/add`;
     Axios.get(url)
       .then((result) => {
         dispatch(actMemberDetailSuccess(result.data));

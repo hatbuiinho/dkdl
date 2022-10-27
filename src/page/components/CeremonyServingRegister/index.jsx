@@ -15,16 +15,16 @@ const CeremonyServingRegister = (props) => {
     setStep(s);
   };
   let stepTemplate = [
-    {
-      title: 'Thông tin cơ bản',
-      template: <Step1 submitStep={submitStep(1)} />,
-      current: 0,
-    },
     // {
-    //   title: 'Thông tin đầy đủ',
-    //   template: <Step2 submitStep={submitStep(2)} />,
-    //   current: 1,
+    //   title: 'Thông tin cơ bản',
+    //   template: <Step1 submitStep={submitStep(1)} />,
+    //   current: 0,
     // },
+    {
+      title: 'Thông tin đầy đủ',
+      template: <Step2 submitStep={submitStep(2)} />,
+      current: 1,
+    },
     // {
     //   title: 'Thông tin đầy đủ',
     //   template: <Step3 submitStep={submitStep(3)} />,
