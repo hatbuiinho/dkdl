@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Input, Select, Layout, Tabs, Radio, Space, Rate, Checkbox, Col, Row, Form, Button, Upload, message, Image } from 'antd';
 import { LoadingOutlined, PlusOutlined, UploadOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { actFetchRegisterMember } from "./modules/action";
+import { actFetchRegisterStep4 } from "./modules/action";
 
 // const { Content } = Layout;
 // const { TabPane } = Tabs;
@@ -75,8 +75,8 @@ const Step4 = (props) => {
 
     const [form] = Form.useForm();
     const onFinish = (values) => {
-        console.log('giá trị nhập: ', values);
-        const action = actFetchRegisterMember(values);
+        console.log('giá trị nhập step 4: ', values);
+        const action = actFetchRegisterStep4(values);
         dispatch(action);
         history.push('/login');
     };
@@ -162,7 +162,7 @@ const Step4 = (props) => {
                         )}
                     </Select>
                 </Form.Item>
-                <Form.Item
+                {/* <Form.Item
                     label="Ảnh làm thẻ"
                 >
                     <Form.Item
@@ -177,7 +177,7 @@ const Step4 = (props) => {
                     </Form.Item>
                     <span>Ảnh chụp chân dung bằng điện thoại với nền đơn sắc, rõ nét, chính diện hoặc ảnh chụp hình thẻ 3x4 (mới nhất)</span>
                     <Image width={200} src="/images/anh-mau.png" alt='ảnh mẫu' />
-                </Form.Item>
+                </Form.Item> */}
                 <Form.Item
                     label="Ghi chú"
                     name="note"

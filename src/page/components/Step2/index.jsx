@@ -1,9 +1,9 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Form, Input, Select, Layout, Tabs, Radio, Button, Space, Cascader } from 'antd';
-import { REGEX_PHONE } from "../../../utils/common";
+import { REGEX_PHONE, REGEX_YEAR } from "../../../utils/common";
 import { useDispatch, useSelector } from 'react-redux';
-import {actFetchAddInfoStep2 } from "./modules/action";
+import { actFetchAddInfoStep2 } from "./modules/action";
 
 // const { Content } = Layout;
 // const { TabPane } = Tabs;
@@ -116,17 +116,24 @@ const formItemLayout = {
 
 const Step2 = (props) => {
   const { submitStep, title } = props;
+  const [form] = Form.useForm();
   // lấy data từ redux
   const memberInfo = useSelector(state => state.registerReducer.data);
-  console.log("thông tin member step2: ", memberInfo);
-  const dispatch = useDispatch();
+  console.log("state.registerReducer.data step2: ", memberInfo);
+  const loading = useSelector(state => state.registerReducer.loading);
+  console.log("loading: ", loading);
 
-  const [form] = Form.useForm();
+  const dispatch = useDispatch();
+  const roleInGroup = memberInfo ? memberInfo.roleInGroup : null;
+  const citizenIdOfLeader = memberInfo ? memberInfo.cccd : null;
+  const registerType = memberInfo ? memberInfo.registerType : 0;
+ 
   const onFinish = (values) => {
     console.log('giá trị nhập: ', values);
     const action = actFetchAddInfoStep2(values);
     dispatch(action);
-    submitStep();
+
+    // submitStep();
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -143,14 +150,14 @@ const Step2 = (props) => {
         {...formItemLayout}
         onFinish={onFinish}
         initialValues={{
-          'roleInGroup': memberInfo ? memberInfo.roleInGroup : 0,
-          'citizenIdOfLeader': memberInfo ? memberInfo.citizenIdOfLeader : '',
-          'name': memberInfo ? memberInfo.name : '',
+          'roleInGroup': roleInGroup ? roleInGroup : 2,
+          'citizenIdOfLeader': citizenIdOfLeader ? citizenIdOfLeader : '',
+          // 'name': memberInfo ? memberInfo.name : '',
           'buddhistName': memberInfo ? memberInfo.buddhistName : '',
           'gender': memberInfo ? memberInfo.gender : 0,
           'dayOfBirth': memberInfo ? memberInfo.dayOfBirth : '',
           'email': memberInfo ? memberInfo.email : '',
-          'phone': memberInfo ? memberInfo.phone : '',
+          // 'phone': memberInfo ? memberInfo.phone : '',
           // 'permanentAddress': memberInfo ? memberInfo.permanentAddress : '',
           // 'temporaryAddress': memberInfo ? memberInfo.temporaryAddress : '',
           'youthAssociation': memberInfo ? memberInfo.youthAssociation : '',
@@ -162,8 +169,8 @@ const Step2 = (props) => {
         <Form.Item
           name="roleInGroup"
           label="Vai trò trong nhóm"
-          rules={[{ required: true, message: 'Xin hãy chọn hình thức đăng ký!' }]}
-          hidden={memberInfo.registerType === 1 ? false : true}
+          rules={[{ required: roleInGroup ? true : false, message: 'Xin hãy chọn hình thức đăng ký!' }]}
+          hidden={registerType === 0 ? true : false}
         >
           <Radio.Group buttonStyle="solid">
             {roleInGroupList != null && roleInGroupList.map(
@@ -175,26 +182,26 @@ const Step2 = (props) => {
           label="Số Căn Cước/Hộ Chiếu"
           tooltip="Bạn nhập số CMND/Căn Cước/Hộ Chiếu của NHÓM TRƯỞNG ạ"
           required
-          hidden={memberInfo.registerType === 1 ? false : true}
+          hidden={registerType === 0 ? true : false}
         >
           <Form.Item
             name="citizenIdOfLeader"
             noStyle
             hasFeedback
-            rules={[{ required: true, message: 'Xin hãy nhập số Căn Cước/Hộ Chiếu!' }]}
+            rules={[{ required: roleInGroup ? true : false, message: 'Xin hãy nhập số Căn Cước/Hộ Chiếu!' }]}
           >
             <Input style={{ width: '60%' }} placeholder="Ví dụ: 025312895" />
           </Form.Item>
           <span className="ant-form-text" style={{ marginLeft: 5 }}>{memberInfo ? memberInfo.nameOfLeader : ''}</span>
         </Form.Item>
-        <Form.Item
+        {/* <Form.Item
           label="Họ và tên"
           name="name"
           rules={[{ required: true, message: 'Xin hãy nhập họ và tên!' }]}
           tooltip="Bạn ghi đầy đủ dấu và viết IN HOA chữ cái đầu. Ví dụ: Trần Quốc Bảo"
         >
           <Input placeholder="Ví dụ: Trần Quốc Bảo" />
-        </Form.Item>
+        </Form.Item> */}
         <Form.Item
           label="Pháp danh"
           name="buddhistName"
@@ -217,13 +224,17 @@ const Step2 = (props) => {
           name="dayOfBirth"
           label="Năm sinh"
           hasFeedback
-          rules={[{ required: true, message: 'Xin hãy chọn năm sinh!' }]}
+          rules={[
+            { required: true, message: 'Xin hãy nhập năm sinh!' },
+            { pattern: REGEX_YEAR, message: 'Năm sinh không hợp lệ!' },
+          ]}
         >
-          <Select placeholder="Chọn năm sinh">
+          {/* <Select placeholder="Chọn năm sinh">
             {dayOfBirth != null && dayOfBirth.map(
               item => <Option key={item.id} value={item.id}>{item.year}</Option>
             )}
-          </Select>
+          </Select> */}
+          <Input placeholder="Năm sinh" />
         </Form.Item>
         <Form.Item
           name="email"
@@ -232,7 +243,7 @@ const Step2 = (props) => {
           rules={[
             {
               type: 'email',
-              message: 'Không phải E-mail hợp lệ!',
+              message: 'E-mail không hợp lệ!',
             },
             {
               required: true,
@@ -242,17 +253,17 @@ const Step2 = (props) => {
         >
           <Input placeholder='ví dụ: abc@gmail.com' />
         </Form.Item>
-        <Form.Item
+        {/* <Form.Item
           name="phone"
           label="Số điện thoại"
           rules={[
             { required: true, message: 'Xin hãy nhập số điện thoại!' },
-            // { pattern: REGEX_PHONE, message: 'Số điện thoại không hợp lệ!' },
+            { pattern: REGEX_PHONE, message: 'Số điện thoại không hợp lệ!' },
           ]}
           tooltip="Bạn nhập số điện thoại theo cú pháp viết liền KHÔNG CÁCH. Ví dụ: 0983336612"
         >
           <Input style={{ width: '100%' }} placeholder="Ví dụ: 0983336612" />
-        </Form.Item>
+        </Form.Item> */}
         <Form.Item
           name="permanentAddress"
           label="Địa chỉ thường trú"

@@ -4,7 +4,7 @@ import {
   
   export const actFetchAddInfoStep3 = (values) => {
     return (dispatch) => {
-      console.log("action step3 data", values);
+      // console.log("action step3 data", values);
       dispatch(actAddInfoStep3Success(values));
     };
   };

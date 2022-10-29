@@ -4,6 +4,8 @@ import { Input, Select, Layout, Tabs, Radio, Space, Form, Col, Row, Button } fro
 import { REGEX_PHONE } from "../../../utils/common";
 import { useDispatch, useSelector } from 'react-redux';
 import { actFetchCheckInfo } from "./modules/action";
+import Loader from "../../../component/Loader";
+import { LoadingOutlined } from '@ant-design/icons';
 // const { Content } = Layout;
 // const { TabPane } = Tabs;
 // const { Option } = Select;
@@ -28,14 +30,21 @@ const formItemLayout = {
 const Step1 = (props) => {
   const { submitStep, title } = props;
   const [form] = Form.useForm();
+
+  const memberInfo = useSelector(state => state.registerReducer.data);
+  console.log("(step 1) data: ", memberInfo);
+  const loading = useSelector(state => state.registerReducer.loading);
+  console.log("loading: ", loading);
+
   const dispatch = useDispatch();
 
   const onFinish = (values) => {
     console.log('giá trị nhập: ', values);
-    
     const action = actFetchCheckInfo(values);
     dispatch(action);
-    submitStep();
+    if (!loading) {
+      submitStep();
+    }
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -70,7 +79,7 @@ const Step1 = (props) => {
           label="Số điện thoại"
           rules={[
             { required: true, message: 'Xin hãy nhập số điện thoại!' },
-            // { pattern: REGEX_PHONE, message: 'Số điện thoại không hợp lệ!' },
+            { pattern: REGEX_PHONE, message: 'Số điện thoại không hợp lệ!' },
           ]}
           tooltip="Bạn nhập số điện thoại theo cú pháp viết liền KHÔNG CÁCH. Ví dụ: 0983336612"
         >
@@ -78,9 +87,9 @@ const Step1 = (props) => {
         </Form.Item>
         <Form.Item
           name="citizenId"
-          label="Số Căn Cước/Hộ Chiếu"
-          rules={[{ required: true, message: 'Xin hãy nhập số Căn Cước/Hộ Chiếu!' }]}
-          tooltip="Bạn nhập đầy đủ và chính xác Số CMND/Căn Cước/Hộ Chiếu của mình ạ. Ví dụ: 025312895"
+          label="Số căn cước/Hộ chiếu"
+          rules={[{ required: true, message: 'Xin hãy nhập số Căn cước/Hộ chiếu!' }]}
+          tooltip="Bạn nhập đầy đủ và chính xác Số CMND/Căn cước/Hộ chiếu của mình ạ. Ví dụ: 025312895"
         >
           <Input style={{ width: '100%' }} placeholder="Ví dụ: 025312895" />
         </Form.Item>
@@ -97,7 +106,7 @@ const Step1 = (props) => {
         </Form.Item>
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
           <Button type="primary" htmlType="submit">
-            Đăng ký
+            {loading ? <LoadingOutlined style={{ paddingLeft: 22, paddingRight: 22 }} /> : 'Tiếp theo'}
           </Button>
         </Form.Item>
       </Form>
