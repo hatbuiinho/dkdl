@@ -4,6 +4,7 @@ import { ROUTES } from './routes';
 import { Route } from 'react-router-dom';
 import { AppRoute } from './routes';
 import { NotFound } from './page/Error';
+import React from 'react';
 
 function App() {
   return (

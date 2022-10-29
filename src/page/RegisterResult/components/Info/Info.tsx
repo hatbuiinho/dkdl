@@ -1,6 +1,5 @@
 import { Card, Form, Input } from 'antd';
 import React from 'react';
-import FloatingLabelInput from '../../../../component/Form/FloatingLabel';
 
 type Item = {
   name: string;
@@ -20,7 +19,7 @@ const Info = (props: InfoProps) => {
   return (
     <Card size="small" title={title} className={className}>
       {data.map((input) => (
-        <FloatingLabelInput {...input} />
+        <Input {...input} />
       ))}
     </Card>
   );

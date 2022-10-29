@@ -2,6 +2,10 @@ import React from 'react';
 import { Typography, Row, Col, Form } from 'antd';
 import { JobInfo, UserAvatar, PersonalInfo, TripInfo } from './components';
 import ExtraInfo from './components/Info/ExtraInfo';
+import { Box, Fade, Flex, Image } from '@chakra-ui/react';
+import { Variants } from 'framer-motion';
+import FadeIn from '../../component/Common/Animation/FadeInUp';
+import App from './components/Transition';
 
 const result = {
   name: 'Đặng Thị Mỹ Trinh',
@@ -71,6 +75,17 @@ SDT
 Thời gian về chùa
 
  */
+
+const fadeInVariants: Variants = {
+  start: {
+    opacity: 0,
+    translateY: 5,
+  },
+  end: {
+    opacity: 1,
+    translateY: 0,
+  },
+};
 const { Title } = Typography;
 
 const RegisterResult = (props) => {
@@ -99,13 +114,16 @@ const RegisterResult = (props) => {
               <Col>
                 <TripInfo className="d-flex flex-column border rounded" />
               </Col>
-              <Col>
-                <ExtraInfo />
-              </Col>
+              <Col></Col>
             </Row>
           </Col>
         </Row>
       </Form>
+      {/* <Testimo /> */}
+      <FadeIn>
+        <ExtraInfo />
+      </FadeIn>
+      <App />
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import react from '@vitejs/plugin-react';
 import { createStyleImportPlugin, AntdResolve } from 'vite-plugin-style-import';
 import { defineConfig } from 'vite';
-import defaultTheme from 'antd/dist/default-theme';
 
 export default defineConfig({
   server: { port: 3030 },

@@ -1,10 +1,11 @@
-import React, { ReactNode } from 'react';
-import { HTMLMotionProps, motion } from 'framer-motion';
+import { chakra, shouldForwardProp } from '@chakra-ui/react';
+import { motion, isValidMotionProp } from 'framer-motion';
 
-type Props = { children: ReactNode } & HTMLMotionProps<'div'>;
+const ChakraMotionBox = chakra(motion.div, {
+  /**
+   * Allow motion props and non-Chakra props to be forwarded.
+   */
+  shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
+});
 
-const MotionBox = (props: Props) => {
-  return <motion.div {...props}>{props.children}</motion.div>;
-};
-
-export default MotionBox;
+export default ChakraMotionBox;
