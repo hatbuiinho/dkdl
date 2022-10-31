@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Form, Input, Select, Layout, Tabs, Radio, Button, Space, Cascader } from 'antd';
 import { REGEX_PHONE, REGEX_YEAR } from "../../../utils/common";
 import { useDispatch, useSelector } from 'react-redux';
 import { actFetchAddInfoStep2 } from "./modules/action";
+import Axios from 'axios';
+import { LoadingOutlined } from '@ant-design/icons';
 
 // const { Content } = Layout;
 // const { TabPane } = Tabs;
@@ -11,9 +13,10 @@ const { Option } = Select;
 
 // hình thức đăng ký
 const roleInGroupList = [
-  { id: 0, name: "Nhóm trưởng" },
-  { id: 1, name: "Nhóm phó" },
-  { id: 2, name: "Thành viên" },
+  { id: 0, name: "Đăng ký lẻ" },
+  { id: 1, name: "Nhóm trưởng" },
+  { id: 2, name: "Nhóm phó" },
+  { id: 3, name: "Thành viên" },
 ];
 
 // giới tính
@@ -34,50 +37,50 @@ const dayOfBirth = [
 // địa chỉ
 const addressList = [
   {
-    value: 'HoChiMinh',
-    label: 'Hồ Chí Minh',
-    children: [
+    id: 'HoChiMinh',
+    name: 'Hồ Chí Minh',
+    district: [
       {
-        value: 'Quan1',
-        label: 'Quận 1',
-        children: [
+        id: 'Quan1',
+        name: 'Quận 1',
+        village: [
           {
-            value: 'phuong1',
-            label: 'Phường 1',
+            id: 'phuong1',
+            name: 'Phường 1',
           },
           {
-            value: 'phuong2',
-            label: 'Phường 2',
+            id: 'phuong2',
+            name: 'Phường 2',
           },
         ],
       },
       {
-        value: 'Quan2',
-        label: 'Quận 2',
-        children: [
+        id: 'Quan2',
+        name: 'Quận 2',
+        village: [
           {
-            value: 'phuong1',
-            label: 'Phường 1',
+            id: 'phuong1',
+            name: 'Phường 1',
           },
           {
-            value: 'phuong2',
-            label: 'Phường 2',
+            id: 'phuong2',
+            name: 'Phường 2',
           },
         ],
       },
     ],
   },
   {
-    value: 'HaNoi',
-    label: 'Hà Nội',
-    children: [
+    id: 'HaNoi',
+    name: 'Hà Nội',
+    district: [
       {
-        value: 'BaDinh',
-        label: 'Ba Đình',
-        children: [
+        id: 'BaDinh',
+        name: 'Ba Đình',
+        village: [
           {
-            value: 'DienBien',
-            label: 'Điện Biên',
+            id: 'DienBien',
+            name: 'Điện Biên',
           },
         ],
       },
@@ -86,12 +89,12 @@ const addressList = [
 ];
 
 // nơi sinh hoạt
-const youthAssociationList = [
-  { id: 1, code: "ctn-hcm", name: "CTN HCM" },
-  { id: 2, code: "ctn-ag", name: "CTN Ang Giang" },
-  { id: 3, code: "ctn-bd", name: "CTN Bình Dương" },
-  { id: 999, code: "khongchon", name: "Chưa có" },
-];
+// const youthAssociationList = [
+//   { id: 1, code: "ctn-hcm", name: "CTN HCM" },
+//   { id: 2, code: "ctn-ag", name: "CTN Ang Giang" },
+//   { id: 3, code: "ctn-bd", name: "CTN Bình Dương" },
+//   { id: 999, code: "khongchon", name: "Chưa có" },
+// ];
 // tổ
 const groupOfYouthAssociationList = [
   { id: 1, code: "to1", name: "Tổ 1" },
@@ -117,6 +120,11 @@ const formItemLayout = {
 const Step2 = (props) => {
   const { submitStep, title } = props;
   const [form] = Form.useForm();
+  const [youthAssociationList, setYouthAssociationList] = useState([]);
+  const [provinceList, setProvinceList] = useState([]);
+  const [districtList, setDistrictList] = useState([]);
+  const [villageList, setVillageList] = useState([]);
+
   // lấy data từ redux
   const memberInfo = useSelector(state => state.registerReducer.data);
   console.log("state.registerReducer.data step2: ", memberInfo);
@@ -124,16 +132,52 @@ const Step2 = (props) => {
   console.log("loading: ", loading);
 
   const dispatch = useDispatch();
-  const roleInGroup = memberInfo ? memberInfo.roleInGroup : null;
-  const citizenIdOfLeader = memberInfo ? memberInfo.cccd : null;
-  const registerType = memberInfo ? memberInfo.registerType : 0;
- 
+  // const roleInGroup = memberInfo.registerType === 1 ? memberInfo.roleInGroup : null;
+  const citizenIdOfLeader = memberInfo?.citizenIdOfLeader ? memberInfo.citizenIdOfLeader : '';
+  const registerType = memberInfo?.registerType ? memberInfo.registerType : 0;
+
+  useEffect(() => {
+    let urlCTN = `http://apibrm.thientonphatquang.vn/api/cong-khai/danh-muc/co-cau-to-chuc/chung-thanh-nien`;
+    let urlTinh = `https://apiv2.multiservices.tk/api/v1/Address/ds-tinh`;
+    let urlHuyen = `https://apiv2.multiservices.tk/api/v1/Address/ds-tinh`;
+    let urlXa = `https://apiv2.multiservices.tk/api/v1/Address/ds-tinh`;
+    
+    const requestCTN = Axios.get(urlCTN);
+    const requestTinh = Axios.get(urlTinh);
+    const requestHuyen = Axios.get(urlHuyen);
+    const requestXa = Axios.get(urlXa);
+
+    Axios.all([requestCTN, requestTinh, requestHuyen, requestXa])
+      .then(
+        Axios.spread((...responses) => {
+          const responseCTN = responses[0];
+          const responseTinh = responses[1];
+          const responseHuyen = responses[2];
+          const responseXa = responses[3];
+
+          console.log(responseCTN);
+          console.log(responseTinh);
+          console.log(responseHuyen);
+          console.log(responseXa);
+
+          setYouthAssociationList(responseCTN);
+          setProvinceList(responseTinh);
+          setDistrictList(responseHuyen);
+          setVillageList(responseXa);
+        })
+      )
+      .catch((errors) => {
+        console.log('lỗi kết nối: ', errors);
+      });
+  }, []);
+
   const onFinish = (values) => {
     console.log('giá trị nhập: ', values);
     const action = actFetchAddInfoStep2(values);
     dispatch(action);
-
-    // submitStep();
+    if (!loading) {
+      submitStep();
+    }
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -150,7 +194,7 @@ const Step2 = (props) => {
         {...formItemLayout}
         onFinish={onFinish}
         initialValues={{
-          'roleInGroup': roleInGroup ? roleInGroup : 2,
+          'roleInGroup': registerType === 1 ? 3 : 0,
           'citizenIdOfLeader': citizenIdOfLeader ? citizenIdOfLeader : '',
           // 'name': memberInfo ? memberInfo.name : '',
           'buddhistName': memberInfo ? memberInfo.buddhistName : '',
@@ -162,6 +206,7 @@ const Step2 = (props) => {
           // 'temporaryAddress': memberInfo ? memberInfo.temporaryAddress : '',
           'youthAssociation': memberInfo ? memberInfo.youthAssociation : '',
           'groupOfYouthAssociation': memberInfo ? memberInfo.groupOfYouthAssociation : '',
+          'note': ''
         }}
         onFinishFailed={onFinishFailed}
         scrollToFirstError
@@ -169,26 +214,29 @@ const Step2 = (props) => {
         <Form.Item
           name="roleInGroup"
           label="Vai trò trong nhóm"
-          rules={[{ required: roleInGroup ? true : false, message: 'Xin hãy chọn hình thức đăng ký!' }]}
+          rules={[{ required: registerType === 1 ? true : false, message: 'Xin hãy chọn hình thức đăng ký!' }]}
           hidden={registerType === 0 ? true : false}
         >
           <Radio.Group buttonStyle="solid">
-            {roleInGroupList != null && roleInGroupList.map(
-              item => <Radio.Button value={item.id} key={item.id}>{item.name}</Radio.Button>
+            {roleInGroupList != null && roleInGroupList.map(item => {
+              if (item.id != 0) {
+                return <Radio.Button value={item.id} key={item.id}>{item.name}</Radio.Button>
+              }
+            }
             )}
           </Radio.Group>
         </Form.Item>
         <Form.Item
           label="Số Căn Cước/Hộ Chiếu"
           tooltip="Bạn nhập số CMND/Căn Cước/Hộ Chiếu của NHÓM TRƯỞNG ạ"
-          required
+          required={registerType === 1 ? true : false}
           hidden={registerType === 0 ? true : false}
         >
           <Form.Item
             name="citizenIdOfLeader"
             noStyle
             hasFeedback
-            rules={[{ required: roleInGroup ? true : false, message: 'Xin hãy nhập số Căn Cước/Hộ Chiếu!' }]}
+            rules={[{ required: registerType === 1 ? true : false, message: 'Xin hãy nhập số Căn Cước/Hộ Chiếu của NHÓM TRƯỞNG ạ!' }]}
           >
             <Input style={{ width: '60%' }} placeholder="Ví dụ: 025312895" />
           </Form.Item>
@@ -234,7 +282,7 @@ const Step2 = (props) => {
               item => <Option key={item.id} value={item.id}>{item.year}</Option>
             )}
           </Select> */}
-          <Input placeholder="Năm sinh" />
+          <Input placeholder="Nhập năm sinh" />
         </Form.Item>
         <Form.Item
           name="email"
@@ -272,7 +320,12 @@ const Step2 = (props) => {
             { type: 'array', required: true, message: 'Xin hãy chọn địa chỉ thường trú!' },
           ]}
         >
-          <Cascader options={addressList} placeholder="Chọn địa chỉ thường trú" />
+          {/* <Cascader options={addressList} placeholder="Chọn địa chỉ thường trú" /> */}
+          <Select placeholder="Chọn tỉnh">
+            {provinceList?.map(
+              item => <Option key={item.id} value={item.id}>{item.ten}</Option>
+            )}
+          </Select>
         </Form.Item>
         <Form.Item
           name="temporaryAddress"
@@ -281,7 +334,7 @@ const Step2 = (props) => {
             { type: 'array', required: true, message: 'Xin hãy chọn địa chỉ tạm trú!' },
           ]}
         >
-          <Cascader options={addressList} placeholder="Chọn địa chỉ tạm trú" />
+          {/* <Cascader options={addressList} placeholder="Chọn địa chỉ tạm trú" /> */}
         </Form.Item>
         <Form.Item
           name="youthAssociation"
@@ -290,8 +343,8 @@ const Step2 = (props) => {
           rules={[{ required: true, message: 'Xin hãy chọn nơi sinh hoạt!' }]}
         >
           <Select placeholder="Chọn nơi sinh hoạt">
-            {youthAssociationList != null && youthAssociationList.map(
-              item => <Option value={item.id} key={item.id}>{item.name}</Option>
+            {youthAssociationList && youthAssociationList.map(
+              item => <Option value={item.id} key={item.id}>{item.ten}</Option>
             )}
           </Select>
         </Form.Item>
@@ -309,7 +362,7 @@ const Step2 = (props) => {
         </Form.Item>
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
           <Button type="primary" htmlType="submit">
-            Tiếp theo
+            {loading ? <LoadingOutlined style={{ paddingLeft: 22, paddingRight: 22 }} /> : 'Tiếp theo'}
           </Button>
         </Form.Item>
       </Form>

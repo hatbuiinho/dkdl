@@ -1,5 +1,8 @@
 import { CHECK_INFO_SUCCESS } from './constant';
-import { REGISTER_REQUEST, REGISTER_FAILED } from '../../CeremonyServingRegister/modules/constant';
+import {
+  REGISTER_REQUEST,
+  REGISTER_FAILED,
+} from '../../CeremonyServingRegister/modules/constant';
 import Axios from 'axios';
 
 export const actFetchCheckInfo = (values) => {
@@ -9,29 +12,27 @@ export const actFetchCheckInfo = (values) => {
   return (dispatch) => {
     dispatch(actCheckInfoRequest());
     const { name, phone, citizenId } = values;
-    const data = {
+    const basicInfo = {
       hoTen: name,
       soDienThoai: phone,
-      cccd: citizenId
+      cccd: citizenId,
     };
-    console.log("data gửi api", data);
+    // console.log('data gửi api', basicInfo);
     // gọi api check xem Tên và CCCD đã đăng ký chưa
     const url = `https://apiv2.multiservices.tk/api/v1/Member/search`;
     Axios({
       url,
       method: 'POST',
-      data,
+      data: basicInfo,
     })
       .then((result) => {
-        const {resultData} = result.data;
-        console.log('kết nối thành công: ', resultData);        
-        dispatch(actCheckInfoSuccess(resultData ? resultData : values));
+        // console.log('kết nối thành công: ', result.data.data.data);
+        dispatch(actCheckInfoSuccess(result.data.data.data ? result.data.data.data : values));
       })
       .catch((error) => {
-        console.log('lỗi kết nối: ', error.message);
+        // console.log('lỗi kết nối: ', error.message);
         dispatch(actCheckInfoFailed(error.message));
       });
-  // dispatch(actCheckInfoSuccess(values));
   };
 };
 

@@ -49,7 +49,7 @@ const registerReducer = (state = initialState, action) => {
 
     // step 1
     case CHECK_INFO_SUCCESS: {
-      console.log("payload", action.payload);
+      // console.log("payload", action.payload);
       const { name, phone, citizenId, registerType } = action.payload;
       const newData = { name, phone, citizenId, registerType };
       return { ...state, loading: false, data: newData, error: null };

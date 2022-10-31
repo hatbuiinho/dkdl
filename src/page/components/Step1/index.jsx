@@ -32,9 +32,9 @@ const Step1 = (props) => {
   const [form] = Form.useForm();
 
   const memberInfo = useSelector(state => state.registerReducer.data);
-  console.log("(step 1) data: ", memberInfo);
+  // console.log("(step 1) data: ", memberInfo);
   const loading = useSelector(state => state.registerReducer.loading);
-  console.log("loading: ", loading);
+  // console.log("loading: ", loading);
 
   const dispatch = useDispatch();
 

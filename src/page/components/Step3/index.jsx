@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Input, Select, Layout, Tabs, Radio, Space, Form, Button } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import {actFetchAddInfoStep3 } from "./modules/action";
+import Axios from 'axios';
+import { LoadingOutlined } from '@ant-design/icons';
 
 // const { Content } = Layout;
 // const { TabPane } = Tabs;
@@ -42,12 +44,59 @@ const formItemLayout = {
 const Step3 = (props) => {
   // const history = useHistory();
   const { submitStep, title } = props;
+  const [form] = Form.useForm();
+  
+  // const [departLocationList, setDepartLocationList] = useState([]);
+  // const [timeToStartList, setTimeToStartList] = useState([]);
+  // const [timeToReturnList, setTimeToReturnList] = useState([]);
+  
   // lấy data từ redux
   const memberInfo = useSelector(state => state.registerReducer.data);
   console.log("thông tin member step3: ", memberInfo);
   const dispatch = useDispatch();
   
-  const [form] = Form.useForm();
+  useEffect(() => {
+    const greatCeremonyId = 35;
+    // lấy nơi xuất phát
+    const url0 = `http://apibrm.thientonphatquang.vn/api/cong-khai/danh-muc/dang-ky-dai-le/chung-thanh-nien/dia-diem-xuat-phat`;
+    Axios({
+      url0,
+      method: 'GET',
+    })
+      .then((result) => {
+        console.log("nơi xuất phát", result.data);
+        // setDepartLocationList(result.data);
+      })
+      .catch((error) => {
+        console.log('lỗi kết nối: ', error.message);
+      });
+
+    const url1 = `https://apiv2.multiservices.tk/api/v1/TimeToStarts/greatceremony/${greatCeremonyId}`;
+    // Axios({
+    //   url1,
+    //   method: 'GET',
+    // })
+    //   .then((result) => {
+    //     setTimeToStartList(result.data.data);
+    //   })
+    //   .catch((error) => {
+    //     console.log('lỗi kết nối: ', error.message);
+    //   });
+
+    // // lấy thời gian triwr về
+    // const url2 = `https://apiv2.multiservices.tk/api/v1/TimeToReturns/greatceremony/${greatCeremonyId}`;
+    // Axios({
+    //   url2,
+    //   method: 'GET',
+    // })
+    //   .then((result) => {
+    //     setTimeToReturnList(result.data.data);
+    //   })
+    //   .catch((error) => {
+    //     console.log('lỗi kết nối: ', error.message);
+    //   });
+  }, []);
+
   const onFinish = (values) => {
     console.log('giá trị nhập: ', values);
     const action = actFetchAddInfoStep3(values);
